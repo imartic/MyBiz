@@ -1,0 +1,101 @@
+﻿body {
+}
+
+#drawerIcon{
+    margin-right: 20px;
+}
+
+hr {
+    border-color: rgba(0,0,0,0.12);
+    margin: 4px 0 3px;
+}
+
+#moreMenuIcon{
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+#demo-menu-lower-right{
+    margin-left: 40px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+.content{
+    margin: 0 auto;
+    /*text-align:center;*/
+}
+
+
+.contentHome .description{
+    margin: 5px 0 15px;
+    font-size: 20px;
+}
+
+.contentHome .box{
+    float:left;
+    text-align:center;
+    margin-top:20px;
+}
+
+.contentHome table{
+    border:none;
+    box-shadow:none;
+    margin: 0px auto 20px;
+    width: 100%;
+}
+
+
+.contentProposals .mdl-data-table{
+    width:100%;
+}
+
+.contentProposals h4{
+    margin-bottom:0px;
+}
+
+.contentProposals table{
+    margin-top:28px;
+}
+
+.content .mdl-layout__header-row{
+    padding:0;
+}
+
+
+.proposalForm{
+    margin-top:20px;
+}
+
+.section{
+
+    cursor:pointer;
+    padding-bottom:10px;
+}
+
+.company-data{
+    margin-bottom:20px;
+}
+
+.sectionTitle{
+    vertical-align:middle;
+    font-size: 18px;
+    margin-left: 7px;
+}
+
+.sectionIcon{
+    vertical-align:middle;
+}
+
+.proposalInput{
+    margin: 0 10px 0 10px;
+}
+
+.proposalBtns{
+    margin-top:40px;
+    margin-left:10px;
+    float:right;
+}
