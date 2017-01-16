@@ -81,7 +81,7 @@
 
                         <!-- Title -->
                         <div class="mdl-layout-title">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield proposalInput">
                                 <input class="mdl-textfield__input" type="text" id="proposalName"/>
                                 <label class="mdl-textfield__label" for="proposalName">Proposal name</label>
                             </div>

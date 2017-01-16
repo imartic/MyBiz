@@ -48,7 +48,7 @@ $('.saveProposal').click(function () {
 });
 
 $('.exportProposal').click(function () {
-    saveProposal();
+    //saveProposal();
     exportProposal();
 });
 
@@ -79,6 +79,7 @@ function saveProposal() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
+            alert("Proposal successfully saved!");
             //if (data.d == "OK") {
             //    //alert("Rezultat uspješno poslan.");
             //    window.location = 'ThankYou.aspx?lang=' + lang;
@@ -106,54 +107,51 @@ function saveProposal() {
 }
 
 function exportProposal() {
-    var resultToExport = "";
+    //var resultToExport = "";
 
-    $.each(objProposal, function (key, value) {
-        console.log("KEY: " + key + " | " + "VALUE: " + value);
+    //$.each(objProposal, function (key, value) {
+    //    console.log("KEY: " + key + " | " + "VALUE: " + value);
 
-        if (resultToExport.length > 0) resultToExport += "|";
-        resultToExport += key + ":" + value;
-        //console.log('i = ' + counter + ' | obj = ' + Object.keys(objQandA).length)
-        //if (counter == Object.keys(objQandA).length) {
-        //    //console.log("QuestionID: " + key + " | EmployeeID: " + value);
+    //    if (resultToExport.length > 0) resultToExport += "|";
+    //    resultToExport += key + ":" + value;
+    //    //console.log('i = ' + counter + ' | obj = ' + Object.keys(objQandA).length)
+    //    //if (counter == Object.keys(objQandA).length) {
+    //    //    //console.log("QuestionID: " + key + " | EmployeeID: " + value);
 
-        //    //spremanje u bazu ...
-        //    readyToSave = true;
-        //}
-    });
-
-    //$.ajax({
-    //    type: "POST",
-    //    url: "NewEditProposal.aspx/ExportProposal",
-    //    //data: "{objQandA:" + JSON.stringify(objQandA) + "}",
-    //    data: "{proposal:" + "'" + resultToExport + "'" + "}",
-    //    contentType: "application/json; charset=utf-8",
-    //    dataType: "json",
-    //    success: function (data) {
-    //        //if (data.d == "OK") {
-    //        //    //alert("Rezultat uspješno poslan.");
-    //        //    window.location = 'ThankYou.aspx?lang=' + lang;
-    //        //}
-    //        //else if (data.d == "IP address exists") {
-    //        //    if (lang == "en") alert("You have already filled out the questionnaire!");
-    //        //    else alert("Anketu je moguće ispuniti samo jednom!");
-    //        //}
-    //        //else if (data.d == "Error saving result") {
-    //        //    if (lang == "en") alert("Error on sending data!");
-    //        //    else alert("Greška prilikom slanja rezultata!");
-    //        //}
-    //        //else if (data.d == "Error saving IP") {
-    //        //    if (lang == "en") alert("Possible connection error!");
-    //        //    else alert("Moguća greška sa vezom!");
-    //        //}
-    //        //else {
-    //        //    alert(data.d);
-    //        //}
-    //    },
-    //    error: function (res) {
-    //        alert(res.responseText);
-    //    }
+    //    //    //spremanje u bazu ...
+    //    //    readyToSave = true;
+    //    //}
     //});
+
+    $.ajax({
+        type: "POST",
+        url: "NewEditProposal.aspx/ExportProposal",
+        //data: "{objQandA:" + JSON.stringify(objQandA) + "}",
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            console.log(data, data.d, data.d[0], data.d[1]);
+            if (data.d[0] == "exported") {
+                alert("Excel file succesfully exported as " + data.d[1]);
+            }
+            else if (data.d[0] == "excel not installed") {
+                alert("Excel not installed!");
+            }
+            else if (data.d[0] == "") {
+                alert("Error on saving proposal!", data);
+            }
+            else if (data.d[0] == "proposal not saved") {
+                alert("Proposal is not saved!");
+            }
+            else {
+                alert(data.d);
+            }
+        },
+        error: function (res) {
+            alert(res.responseText);
+        }
+    });
 }
 
 
