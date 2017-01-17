@@ -19,8 +19,7 @@ function loadProposals() {
                 var txt = "";
                 if (len > 0) {
                     $(".mdl-spinner").remove();
-                    //prikazuje samo prva 3 reda iz tablice ponuda, privremeno.. kasnije uzeti top 3 upitom!!
-                    for (var i = 0; i < ((len < 3) ? len : 3); i++) {
+                    for (var i = 0; i < len; i++) {
                         console.log(proposals[i].ProposalName + "|" + proposals[i].DateSaved + "|" + proposals[i].ID)
                         txt += "<tbody><tr><td class='mdl-data-table__cell--non-numeric'>" +
                             proposals[i].ProposalName +

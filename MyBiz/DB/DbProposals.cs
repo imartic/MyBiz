@@ -46,6 +46,23 @@ namespace MyBiz.DB
             return dt;
         }
 
+        public static DataTable GetTop3Proposals()
+        {
+            string query = "SELECT TOP 3 ID, ProposalName, DateSaved FROM Proposals ORDER BY DateSaved DESC, ID DESC";
+
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            con.Close();
+            da.Dispose();
+
+            return dt;
+        }
+
         public static int SaveProposal(int proposalID, int userID, string proposalName, DateTime dateSaved, 
             /*int companyID,*/ string companyName)
         {

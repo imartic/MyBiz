@@ -22,7 +22,7 @@ namespace MyBiz
         public static string LoadHomeProposals()
         {
             //Populating a DataTable from database.
-            DataTable dt = DbProposals.GetProposals();
+            DataTable dt = DbProposals.GetTop3Proposals();
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();

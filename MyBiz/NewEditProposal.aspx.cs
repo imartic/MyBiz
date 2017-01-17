@@ -77,10 +77,10 @@ namespace MyBiz
 
             xlWorkBook.SaveAs("D:\\" + obj.proposalName + ".xls");
 
-            //xlWorkBook.Close(true);
-            //xlApp.Quit();
+            xlWorkBook.Close(true);
+            xlApp.Quit();
 
-            if(File.Exists("D:\\" + obj.proposalName + ".xls"))
+            if (File.Exists("D:\\" + obj.proposalName + ".xls"))
             {
                 result[0] = "exported";
                 result[1] = obj.proposalName.ToString() + ".xls";
