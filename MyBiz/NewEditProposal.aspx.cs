@@ -1,5 +1,4 @@
-﻿using MyBiz.DB;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using MyBiz.Data;
 
 namespace MyBiz
 {

@@ -48,7 +48,7 @@
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
                     <li class="mdl-menu__item"><i class="material-icons" id="moreMenuIcon">help_outline</i>Help</li>
                     <hr />
-                    <li class="mdl-menu__item"><i class="material-icons" id="moreMenuIcon">power_settings_new</i>Logout</li>
+                    <li class="mdl-menu__item" id="btnLogout"><i class="material-icons" id="moreMenuIcon">power_settings_new</i>Logout</li>
                 </ul>
             </div>
         </header>
@@ -63,7 +63,7 @@
             </nav>
         </div>
 
-        <main class="mdl-layout__content">
+        <main class="mdl-layout__content mdl-color--grey-100">
             <div class="page-content" id="page-content">Settings</div>
         </main>
     </div>

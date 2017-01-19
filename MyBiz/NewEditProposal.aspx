@@ -64,7 +64,7 @@
             </nav>
         </div>
 
-        <main class="mdl-layout__content">
+        <main class="mdl-layout__content mdl-color--grey-100">
             <div class="page-content mdl-grid" id="page-content">
                 <div class="mdl-cell--10-col content contentProposal">                 
 

@@ -1,4 +1,4 @@
-﻿using MyBiz.DB;
+﻿using MyBiz.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;

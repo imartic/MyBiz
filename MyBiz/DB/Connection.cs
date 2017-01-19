@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace MyBiz.DB
+namespace MyBiz.Data
 {
     class Connection
     {
         public static SqlConnection getConnection()
         {
-            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            string constr = ConfigurationManager.AppSettings.Get("constr");
             SqlConnection con = new SqlConnection(constr);
 
             return con;

@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ABsistemLibrary.Data">
+      <HintPath>D:\FAKS\Završni\dll\ABsistemLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>D:\FAKS\Završni\dll\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -67,13 +73,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\jquery-3.1.1.min.js" />
+    <Content Include="Content\JS\common.js" />
     <Content Include="Content\JS\home.js" />
     <Content Include="Content\JS\newEditProposal.js" />
     <Content Include="Content\JS\proposals.js" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="NewEditProposal.aspx" />
     <Content Include="Proposals.aspx" />
+    <None Include="Resources\background.jpg" />
     <Content Include="Schedule.aspx" />
     <Content Include="Settings.aspx" />
     <Content Include="html\settings.html" />
@@ -104,12 +115,23 @@
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="DB\Connection.cs" />
     <Compile Include="DB\DbProposals.cs" />
+    <Compile Include="DB\DbUser.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="NewEditProposal.aspx.cs">
       <DependentUpon>NewEditProposal.aspx</DependentUpon>
@@ -125,6 +147,11 @@
     </Compile>
     <Compile Include="Proposals.aspx.designer.cs">
       <DependentUpon>Proposals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Schedule.aspx.cs">
       <DependentUpon>Schedule.aspx</DependentUpon>
@@ -170,6 +197,13 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

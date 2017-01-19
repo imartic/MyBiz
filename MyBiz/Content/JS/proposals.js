@@ -34,7 +34,7 @@ function loadProposals() {
                 }
                 else {
                     $("table").hide();
-                    $(".contentProposals").append("<p><b>Nemate spremljenih ponuda.</b></p>");
+                    $(".contentProposals").append("<p><b>No saved proposals.</b></p>");
                 }
             }
         },

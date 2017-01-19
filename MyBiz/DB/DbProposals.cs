@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace MyBiz.DB
+namespace MyBiz.Data
 {
     public class DbProposals
     {

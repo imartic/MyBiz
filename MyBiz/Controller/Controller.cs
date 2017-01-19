@@ -1,14 +1,14 @@
-﻿using System;
+﻿using MyBiz.Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Web;
-using MyBiz.DB;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 
-namespace MyBiz
+namespace MyBiz.Controller
 {
     public class Controller
     {
