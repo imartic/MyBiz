@@ -11,7 +11,6 @@ function loadProposals() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            console.log(data.d + '|' + data);
             var proposals = jQuery.parseJSON(data.d);
             
             if (proposals) {
@@ -19,13 +18,12 @@ function loadProposals() {
                 var txt = "";
                 if (len > 0) {
                     for (var i = 0; i < len; i++) {
-                        console.log(proposals[i].ProposalName + "|" + proposals[i].DateSaved + "|" + proposals[i].ID);
-                        console.log(setIconTooltips(proposals[i].ID));
-                        txt += "<tr><td class='mdl-data-table__cell--non-numeric'>" +
-                            proposals[i].ProposalName +
-                            "</td><td>" +
-                            ToJavaScriptDate(proposals[i].DateSaved) +
-                            "</td>" + setIconTooltips(proposals[i].ID) + "</tr>";
+                        txt += "<tr>" +
+                            "<td class='mdl-data-table__cell--non-numeric'>" + proposals[i].ProposalName + "</td>" +
+                            "<td class='mdl-data-table__cell--non-numeric'>" + proposals[i].ClientName + "</td>" +
+                            "<td class='mdl-data-table__cell--non-numeric'>" + ToJavaScriptDate(proposals[i].DateSaved) + "</td>" +
+                            "<td>" + setIconTooltips(proposals[i].ID) + "</td>" +
+                            "</tr>";
                     }
                     if (txt != "") {
                         $("table").show();
@@ -63,24 +61,22 @@ function ToJavaScriptDate(value) {
 
 function setIconTooltips(proposalId) {
     var onclick_link = "NewEditProposal.aspx";
-    var html_EditDeleteIcons = "<td>" +
-                                    "<button class='mdl-button mdl-js-button mdl-button--icon mdl-color-text--primary-dark'" +
+    var html_EditDeleteIcons = "<button class='mdl-button mdl-js-button mdl-button--icon mdl-color-text--primary-dark'" +
                                             "id='editProposal" + proposalId + "'" +
                                             "style='margin-left:auto;'" +
-                                            "onclick="+"'"+"window.location.href="+"\""+ onclick_link +"\"" +"; return false;"+"'>" +
+                                            "onclick=" + "'" + "window.location.href=" + "\"" + onclick_link + "\"" + "; return false;" + "'>" +
                                         "<i class='material-icons'>create</i>" +
                                     "</button>" +
                                     "<div class='mdl-tooltip' for='editProposal" + proposalId + "'>Edit Proposal</div>" +
-                                "</td>" +
-                                "<td>" +
+                                //"</td>" +
+                                //"<td>" +
                                     "<button class='mdl-button mdl-js-button mdl-button--icon mdl-color-text--red'" +
                                             "id='deleteProposal" + proposalId + "'" +
                                             "style='margin-left:auto;'" +
                                             "onclick='window.location.href=''; return false;'>" +
                                         "<i class='material-icons'>delete</i>" +
                                     "</button>" +
-                                    "<div class='mdl-tooltip' for='deleteProposal" + proposalId + "'>Delete Proposal</div>" +
-                                "</td>";
+                                    "<div class='mdl-tooltip' for='deleteProposal" + proposalId + "'>Delete Proposal</div>";
 
     return html_EditDeleteIcons;
 }

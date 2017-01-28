@@ -63,7 +63,7 @@
             </nav>
         </div>
 
-        <main class="mdl-layout__content mdl-color--grey-100">
+        <main class="mdl-layout__content mdl-color--grey-50">
             <div class="page-content" id="page-content">Shedule</div>
         </main>
     </div>
@@ -72,5 +72,6 @@
 
     <script src="Content/jquery-3.1.1.min.js"></script>
     <script src="Content/mdl-v1.1.2/material.min.js"></script>
+    <script src="Content/JS/common.js"></script>
 </body>
 </html>

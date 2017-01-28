@@ -63,7 +63,7 @@
             </nav>
         </div>
 
-        <main class="mdl-layout__content mdl-color--grey-100">
+        <main class="mdl-layout__content mdl-color--grey-50">
             <div class="page-content mdl-grid" id="page-content">
                 <div class="mdl-cell--10-col content contentProposals">                 
 
@@ -94,12 +94,12 @@
 
                     <hr />
 
-                    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width">
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width" style="margin-bottom:20px">
                         <thead>
                             <tr>
-                                <th class="mdl-data-table__cell--non-numeric full-width">Proposal</th>
-                                <th>Last change</th>
-                                <th></th>
+                                <th class="mdl-data-table__cell--non-numeric" width="50%">Proposal</th>
+                                <th class="mdl-data-table__cell--non-numeric" width="30%">Client</th>
+                                <th class="mdl-data-table__cell--non-numeric" width="20%">Last change</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -154,5 +154,6 @@
         <script src="Content/jquery-3.1.1.min.js"></script>
         <script src="Content/mdl-v1.1.2/material.min.js"></script>
         <script src="Content/JS/proposals.js"></script>
+        <script src="Content/JS/common.js"></script>
 </body>
 </html>

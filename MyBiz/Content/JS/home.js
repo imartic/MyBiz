@@ -10,7 +10,6 @@ function loadProposals() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            console.log(data.d + '|' + data);
             var proposals = jQuery.parseJSON(data.d);
 
             if (proposals) {
@@ -20,7 +19,6 @@ function loadProposals() {
                 if (len > 0) {
                     $(".mdl-spinner").remove();
                     for (var i = 0; i < len; i++) {
-                        console.log(proposals[i].ProposalName + "|" + proposals[i].DateSaved + "|" + proposals[i].ID)
                         txt += "<tbody><tr><td class='mdl-data-table__cell--non-numeric'>" +
                             proposals[i].ProposalName +
                             "</td><td>" +
@@ -28,7 +26,6 @@ function loadProposals() {
                             "</td></tr></tbody>";
                     }
                     if (txt != "") {
-                        console.log("table: " + $(".homeProposalsTbl tbody"));
                         $(".homeProposalsTbl").show();
                         $(".homeProposals .mdl-button--raised").show();
                         $(".homeProposalsTbl").append(txt);
@@ -49,19 +46,4 @@ function loadProposals() {
         }
     });
 };
-
-
-function ToJavaScriptDate(value) {
-    var pattern = /Date\(([^)]+)\)/;
-    var results = pattern.exec(value);
-    var dt = new Date(parseFloat(results[1]));
-
-    //var h = dt.getHours();
-    //h = (h < 10) ? ("0" + h) : h;
-
-    //var m = dt.getMinutes();
-    //m = (m < 10) ? ("0" + m) : m;
-
-    return (dt.getDate() + "." + (dt.getMonth() + 1) + "." + dt.getFullYear() /*+ " - " + h + ":" + m*/);
-}
 

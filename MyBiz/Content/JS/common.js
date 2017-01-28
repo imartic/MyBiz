@@ -14,3 +14,17 @@ $("#btnLogout").click(function () {
         }
     });
 });
+
+function ToJavaScriptDate(value) {
+    var pattern = /Date\(([^)]+)\)/;
+    var results = pattern.exec(value);
+    var dt = new Date(parseFloat(results[1]));
+
+    var h = dt.getHours();
+    h = (h < 10) ? ("0" + h) : h;
+
+    var m = dt.getMinutes();
+    m = (m < 10) ? ("0" + m) : m;
+
+    return (dt.getDate() + "." + (dt.getMonth() + 1) + "." + dt.getFullYear() + " - " + h + ":" + m);
+}

@@ -112,8 +112,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\Controller.cs" />
     <Compile Include="DB\Connection.cs" />
+    <Compile Include="DB\DbItems.cs" />
     <Compile Include="DB\DbProposals.cs" />
     <Compile Include="DB\DbUser.cs" />
     <Compile Include="Global.asax.cs">

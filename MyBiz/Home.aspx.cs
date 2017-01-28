@@ -14,7 +14,7 @@ namespace MyBiz
 {
     public partial class Home : System.Web.UI.Page
     {
-        public DbUser AppUser = null;
+        public static DbUser AppUser = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,22 +46,9 @@ namespace MyBiz
         [WebMethod]
         public static string LoadHomeProposals()
         {
-            //Populating a DataTable from database.
-            DataTable dt = DbProposals.GetTop3Proposals();
-
+            var dt = DbProposals.LoadTop3();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
-            Dictionary<string, object> row;
-            foreach (DataRow dr in dt.Rows)
-            {
-                row = new Dictionary<string, object>();
-                foreach (DataColumn col in dt.Columns)
-                {
-                    row.Add(col.ColumnName, dr[col]);
-                }
-                rows.Add(row);
-            }
-            return serializer.Serialize(rows);
+            return serializer.Serialize(dt);
         } 
         #endregion
     }

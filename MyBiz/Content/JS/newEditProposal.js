@@ -1,10 +1,12 @@
 ﻿
 var objProposal = {};
+var editId = 0;
 
 
 $(document).ready(function () {
     $('.company-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Company data</span>")
     $('.client-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Client data</span>")
+    $('.items-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Items</span>")
 });
 
 
@@ -15,6 +17,10 @@ $('.company-section').click(function () {
 $('.client-section').click(function () {
     //$('.content-one').slideToggle('slow');
     toggleContent($(this), "Client data");
+});
+
+$('.items-section').click(function () {
+    toggleContent($(this), "Items");
 });
 
 
@@ -43,68 +49,11 @@ function toggleContent(section, title){
 //})
 
 
-$('.saveProposal').click(function () {   
-    saveProposal();    
-});
 
 $('.exportProposal').click(function () {
     //saveProposal();
     exportProposal();
 });
-
-function saveProposal() {
-    if (!$('#proposalName').val()) {
-        alert("Proposal name cannot be empty!");
-        $('#proposalName').focus();
-        return;
-    }
-    if (!$('#company').val()) {
-        alert("Company name cannot be empty!");
-        $('#company').focus();
-        return;
-    }
-
-
-    $('.proposalInput :input').each(function () {
-        var input = $(this);
-        objProposal[input.attr('id')] = input.val();
-    })
-
-
-    $.ajax({
-        type: "POST",
-        url: "NewEditProposal.aspx/SaveProposal",
-        //data: "{objQandA:" + JSON.stringify(objQandA) + "}",
-        data: "{proposal:" + "'" + JSON.stringify(objProposal) + "'" + "}",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            alert("Proposal successfully saved!");
-            //if (data.d == "OK") {
-            //    //alert("Rezultat uspješno poslan.");
-            //    window.location = 'ThankYou.aspx?lang=' + lang;
-            //}
-            //else if (data.d == "IP address exists") {
-            //    if (lang == "en") alert("You have already filled out the questionnaire!");
-            //    else alert("Anketu je moguće ispuniti samo jednom!");
-            //}
-            //else if (data.d == "Error saving result") {
-            //    if (lang == "en") alert("Error on sending data!");
-            //    else alert("Greška prilikom slanja rezultata!");
-            //}
-            //else if (data.d == "Error saving IP") {
-            //    if (lang == "en") alert("Possible connection error!");
-            //    else alert("Moguća greška sa vezom!");
-            //}
-            //else {
-            //    alert(data.d);
-            //}
-        },
-        error: function (res) {
-            alert(res.responseText);
-        }
-    });
-}
 
 function exportProposal() {
     //var resultToExport = "";
@@ -131,7 +80,6 @@ function exportProposal() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            console.log(data, data.d, data.d[0], data.d[1]);
             if (data.d[0] == "exported") {
                 alert("Excel file succesfully exported as " + data.d[1]);
             }
@@ -155,3 +103,105 @@ function exportProposal() {
 }
 
 
+function loadItems() {
+    //todo: DbItems.. učitavanje podataka
+}
+
+//dodavanje stavki...
+//ipak bez tablice, prekomplicirano za spremanje i izvlaćenje podataka...
+//ovako se klonira div za unos stavki i svakom novom elementu se povećava broj u id-u
+//kada dodajemo stavku, uzme se broj iz id-a zadnjeg diva i dodaje mu se 1, tako i za svaki element unutar tog diva
+//npr. kada se klonira element sa id="itemText2", novi element će imati id="itemText3".
+$('#btnAddItem').click(function () {
+    //http://stackoverflow.com/questions/32013816/processing-dynamically-added-elements-material-design-lite
+    // get the last div which id starts with ^= "item"
+    var $div = $('div[id^="item"]:last');
+
+    // read the number from that div's id (i.e: 3 from "item3")
+    var num = parseInt($div.prop("id").match(/\d+/g), 10);
+
+    // add that number to all elements and increment it by 1
+    var clone = $('#item' + num).clone().prop('id', 'item' + (num + 1));
+
+    $.each(clone.find('input'), function () {
+        var id = $(this).attr('id');
+        $(this).attr('id', id.replace(/\d+/g, (num + 1))).val('');
+    });
+    $.each(clone.find('label'), function () {
+        var forId = $(this).attr('for');
+        $(this).attr('for', forId.replace(/\d+/g, (num + 1)));
+    });
+
+    clone.find(':not([data-upgraded=""])').attr('data-upgraded', '');
+
+    $('.items').append(clone);
+    clone.show(200, function () {
+        componentHandler.upgradeAllRegistered();
+    });
+});
+
+
+//spremanje
+$('.saveProposal').click(function () {
+    var proposal = getData();
+    //provjere
+    if (proposal.ProposalName == "" || proposal.ProposalName == null) {
+        alert("Proposal name cannot be empty!");
+        $("#proposalName").focus();
+        return;
+    }
+    if (proposal.CompanyName == "" || proposal.CompanyName == null) {
+        alert("Company name cannot be empty!");
+        $("#company").focus();
+        return;
+    }
+
+    if (proposal.ClientName == "" || proposal.ClientName == null) {
+        alert("Client name cannot be empty!");
+        $("#client").focus();
+        return;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "NewEditProposal.aspx/SaveProposal",
+        data: "{proposal:" + JSON.stringify(proposal) + "}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            if (data.d == "OK") {
+                alert("Proposal saved!");
+                window.location = "Proposals.aspx";
+                //loadData(lastQuery, 0, 0);
+            }
+            else {
+                alert(data.d);
+            }
+        },
+        error: function (res) {
+            alert(res.responseText);
+        }
+    });
+});
+
+function getData() {
+    var proposal = {
+        ID: editId,
+        ProposalName: $("#proposalName").val(),
+        CompanyName: $("#company").val(),
+        CompanyAddress: $("#companyAddress").val(),
+        CompanyCity: $("#companyCity").val(),
+        CompanyPIN: $("#companyPIN").val(),
+        CompanyPhone: $("#companyPhone").val(),
+        CompanyFax: $("#companyFax").val(),
+        CompanyEmail: $("#companyEmail").val(),
+        CompanyIBAN: $("#companyIBAN").val(),
+        ClientName: $("#client").val(),
+        ClientAddress: $("#clientAddress").val(),
+        ClientCity: $("#clientCity").val(),
+        ClientPhone: $("#clientPhone").val(),
+        ClientEmail: $("#clientEmail").val(),
+        ClientPIN: $("#clientPIN").val(),
+    };
+    return proposal;
+}

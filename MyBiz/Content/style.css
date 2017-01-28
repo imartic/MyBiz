@@ -71,18 +71,17 @@ hr {
 }
 
 .section{
-
     cursor:pointer;
     padding-bottom:10px;
 }
 
-.company-data{
+.company-data, .client-data, .items-data{
     margin-bottom:20px;
 }
 
 .sectionTitle{
     vertical-align:middle;
-    font-size: 18px;
+    font-size: 22px;
     margin-left: 7px;
 }
 
@@ -95,7 +94,10 @@ hr {
 }
 
 .proposalBtns{
-    margin-top:40px;
-    margin-left:10px;
-    float:right;
+    margin: 40px 0 20px 10px;
+    float: right;
+}
+
+.mdl-textfield__label{
+    color: rgb(15, 49, 109);
 }
