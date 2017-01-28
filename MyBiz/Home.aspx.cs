@@ -46,7 +46,7 @@ namespace MyBiz
         [WebMethod]
         public static string LoadHomeProposals()
         {
-            var dt = DbProposals.LoadTop3();
+            var dt = DbProposals.LoadTop3(AppUser.ID);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             return serializer.Serialize(dt);
         } 

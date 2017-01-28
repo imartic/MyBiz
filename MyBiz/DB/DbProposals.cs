@@ -64,10 +64,11 @@ namespace MyBiz.Data
         }
 
         private const string SQL = @"SELECT ID, ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN FROM Proposals";
-        public static DbCollection<DbProposals> LoadAll(Dbase database = null)
+        public static DbCollection<DbProposals> LoadAll(int userId, Dbase database = null)
         {
-            var sql = SQL + @" ORDER BY DateSaved DESC";
-            var result = DbaseTools.ExecuteQuery<DbProposals>(database, sql);
+            var sql = SQL + @" WHERE UserID=@UserID ORDER BY DateSaved DESC";
+            var di = new DbItem("UserID", userId);
+            var result = DbaseTools.ExecuteQuery<DbProposals>(database, sql, di);
             return result;
         }
 
@@ -81,10 +82,11 @@ namespace MyBiz.Data
             return result;
         }
 
-        public static DbCollection<DbProposals> LoadTop3(Dbase database = null)
+        public static DbCollection<DbProposals> LoadTop3(int userId, Dbase database = null)
         {
-            var sql = @"SELECT TOP 3 ID, ProposalName, DateSaved FROM Proposals ORDER BY DateSaved DESC";
-            var result = DbaseTools.ExecuteQuery<DbProposals>(database, sql);
+            var sql = @"SELECT TOP 3 ID, ProposalName, DateSaved FROM Proposals WHERE UserID=@UserID ORDER BY DateSaved DESC";
+            var di = new DbItem("UserID", userId);
+            var result = DbaseTools.ExecuteQuery<DbProposals>(database, sql, di);
             return result;
         }
 
@@ -97,7 +99,7 @@ namespace MyBiz.Data
         public bool Save(Dbase database = null)
         {
             var result = false;
-            var sqlu = @"UPDATE Proposals SET ProposalName=@ProposalName, DateSaved=@DateSaved, UserID=@UserID, CompanyName=@CompanyName, CompanyAddress=@CompanyAddress, CompanyCity=@CompanyCity, CompanyPIN=@CompanyPIN, CompanyPhone=@CompanyPhone, CompanyFax=@CompanyFax, CompanyEmail=@CompanyEmail, CompanyIBAN=@CompanyIBAN, ClientName=@ClientName, ClientAddress=@ClientAddress, ClientCity=@ClientCity, ClientPhone=@ClientPhone, ClientEmail=@ClientEmail, ClientPIN=@ClientPIN WHERE ID=@ID";
+            var sqlu = @"UPDATE Proposals SET ProposalName=@ProposalName, DateSaved=@DateSaved, CompanyName=@CompanyName, CompanyAddress=@CompanyAddress, CompanyCity=@CompanyCity, CompanyPIN=@CompanyPIN, CompanyPhone=@CompanyPhone, CompanyFax=@CompanyFax, CompanyEmail=@CompanyEmail, CompanyIBAN=@CompanyIBAN, ClientName=@ClientName, ClientAddress=@ClientAddress, ClientCity=@ClientCity, ClientPhone=@ClientPhone, ClientEmail=@ClientEmail, ClientPIN=@ClientPIN WHERE ID=@ID AND UserID=@UserID";
             var sqli = @"INSERT INTO Proposals (ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN) VALUES (@ProposalName, @DateSaved, @UserID, @CompanyName, @CompanyAddress, @CompanyCity, @CompanyPIN, @CompanyPhone, @CompanyFax, @CompanyEmail, @CompanyIBAN, @ClientName, @ClientAddress, @ClientCity, @ClientPhone, @ClientEmail, @ClientPIN)";
 
             var closeDb = (database == null);

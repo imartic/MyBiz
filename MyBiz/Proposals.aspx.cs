@@ -34,7 +34,7 @@ namespace MyBiz
         [WebMethod]
         public static string LoadProposals()
         {
-            var dt = DbProposals.LoadAll();
+            var dt = DbProposals.LoadAll(Home.AppUser.ID);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             return serializer.Serialize(dt);
         }
