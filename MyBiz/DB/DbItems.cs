@@ -46,7 +46,7 @@ namespace MyBiz.Data
     private const string SQL = @"SELECT ID, ProposalID, ItemNumber, ItemText, Unit, Quantity, UnitPrice, TotalPrice FROM Items";
     public static DbCollection<DbItems> LoadAll(Dbase database = null)
     {
-        var sql = SQL + @" ORDER BY ItemNumber DESC";
+        var sql = SQL + @" ORDER BY ID DESC";
         var result = DbaseTools.ExecuteQuery<DbItems>(database, sql);
         return result;
     }

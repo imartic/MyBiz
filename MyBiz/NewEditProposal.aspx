@@ -207,7 +207,7 @@
                                     </tbody>
                                 </table>--%>
 
-                                <div id="item0"> 
+                                <div id="item0" class="item"> 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col">
                                         <input class="mdl-textfield__input" type="text" id="itemNumber0"/>
                                         <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemNumber0">#</label>

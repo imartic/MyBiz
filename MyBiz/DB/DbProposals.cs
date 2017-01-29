@@ -27,6 +27,7 @@ namespace MyBiz.Data
         public string ClientPhone { get; set; }
         public string ClientEmail { get; set; }
         public Int64? ClientPIN { get; set; }
+        public string ItemsTitle { get; set; }
 
 
         public DbProposals()
@@ -34,7 +35,7 @@ namespace MyBiz.Data
         {
         }
 
-        public DbProposals(Int32 _ID, string _ProposalName, DateTime _DateSaved, Int32 _UserID, string _CompanyName, string _CompanyAddress, string _CompanyCity, Int64? _CompanyPIN, string _CompanyPhone, string _CompanyFax, string _CompanyEmail, string _CompanyIBAN, string _ClientName, string _ClientAddress, string _ClientCity, string _ClientPhone, string _ClientEmail, Int64? _ClientPIN)
+        public DbProposals(Int32 _ID, string _ProposalName, DateTime _DateSaved, Int32 _UserID, string _CompanyName, string _CompanyAddress, string _CompanyCity, Int64? _CompanyPIN, string _CompanyPhone, string _CompanyFax, string _CompanyEmail, string _CompanyIBAN, string _ClientName, string _ClientAddress, string _ClientCity, string _ClientPhone, string _ClientEmail, Int64? _ClientPIN, string _ItemsTitle)
                 : base()
         {
             ID = _ID;
@@ -55,6 +56,7 @@ namespace MyBiz.Data
             ClientPhone = _ClientPhone;
             ClientEmail = _ClientEmail;
             ClientPIN = _ClientPIN;
+            ItemsTitle = _ItemsTitle;
 
         }
 
@@ -63,7 +65,7 @@ namespace MyBiz.Data
         {
         }
 
-        private const string SQL = @"SELECT ID, ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN FROM Proposals";
+        private const string SQL = @"SELECT ID, ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN, ItemsTitle FROM Proposals";
         public static DbCollection<DbProposals> LoadAll(int userId, Dbase database = null)
         {
             var sql = SQL + @" WHERE UserID=@UserID ORDER BY DateSaved DESC";
@@ -96,11 +98,12 @@ namespace MyBiz.Data
             return DbaseTools.ExecuteNonQuery(null, sql, this);
         }
 
-        public bool Save(Dbase database = null)
+        public int Save(Dbase database = null)
         {
             var result = false;
-            var sqlu = @"UPDATE Proposals SET ProposalName=@ProposalName, DateSaved=@DateSaved, CompanyName=@CompanyName, CompanyAddress=@CompanyAddress, CompanyCity=@CompanyCity, CompanyPIN=@CompanyPIN, CompanyPhone=@CompanyPhone, CompanyFax=@CompanyFax, CompanyEmail=@CompanyEmail, CompanyIBAN=@CompanyIBAN, ClientName=@ClientName, ClientAddress=@ClientAddress, ClientCity=@ClientCity, ClientPhone=@ClientPhone, ClientEmail=@ClientEmail, ClientPIN=@ClientPIN WHERE ID=@ID AND UserID=@UserID";
-            var sqli = @"INSERT INTO Proposals (ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN) VALUES (@ProposalName, @DateSaved, @UserID, @CompanyName, @CompanyAddress, @CompanyCity, @CompanyPIN, @CompanyPhone, @CompanyFax, @CompanyEmail, @CompanyIBAN, @ClientName, @ClientAddress, @ClientCity, @ClientPhone, @ClientEmail, @ClientPIN)";
+            var id = 0;
+            var sqlu = @"UPDATE Proposals SET ProposalName=@ProposalName, DateSaved=@DateSaved, CompanyName=@CompanyName, CompanyAddress=@CompanyAddress, CompanyCity=@CompanyCity, CompanyPIN=@CompanyPIN, CompanyPhone=@CompanyPhone, CompanyFax=@CompanyFax, CompanyEmail=@CompanyEmail, CompanyIBAN=@CompanyIBAN, ClientName=@ClientName, ClientAddress=@ClientAddress, ClientCity=@ClientCity, ClientPhone=@ClientPhone, ClientEmail=@ClientEmail, ClientPIN=@ClientPIN, ItemsTitle=@ItemsTitle WHERE ID=@ID AND UserID=@UserID";
+            var sqli = @"INSERT INTO Proposals (ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN, ItemsTitle) VALUES (@ProposalName, @DateSaved, @UserID, @CompanyName, @CompanyAddress, @CompanyCity, @CompanyPIN, @CompanyPhone, @CompanyFax, @CompanyEmail, @CompanyIBAN, @ClientName, @ClientAddress, @ClientCity, @ClientPhone, @ClientEmail, @ClientPIN, @ItemsTitle)";
 
             var closeDb = (database == null);
             Db = DbaseTools.CreateDbase(database);
@@ -113,7 +116,8 @@ namespace MyBiz.Data
                     result = DbaseTools.ExecuteNonQuery(Db, sqli, this);
                     if (result)
                     {
-                        SetValue("ID", Convert.ToInt32(Db.ExecuteScalar(@"SELECT @@IDENTITY")));
+                        id = Convert.ToInt32(Db.ExecuteScalar(@"SELECT @@IDENTITY"));
+                        SetValue("ID", id);
                     }
                 }
             }
@@ -127,7 +131,8 @@ namespace MyBiz.Data
                 Db.Dispose();
                 Db = null;
             }
-            return result;
+            //return result;
+            return (result == false) ? -1 : id;
         }
     }
 }

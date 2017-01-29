@@ -39,21 +39,57 @@ namespace MyBiz
         }
 
         [WebMethod]
-        public static string SaveProposal(DbProposals proposal)
+        public static string SaveProposal(DbProposals proposal, DbItems[] items)
         {
+            var result = false;
             var database = DbaseTools.CreateDbase();
-            var dbProposals = new DbProposals(proposal.ID, proposal.ProposalName, DateTime.Now, Home.AppUser.ID, 
-                proposal.CompanyName, proposal.CompanyAddress, proposal.CompanyCity, proposal.CompanyPIN, proposal.CompanyPhone, proposal.CompanyFax,
-                proposal.CompanyEmail, proposal.CompanyIBAN, proposal.ClientName, proposal.ClientAddress, proposal.ClientCity, proposal.ClientPhone,
-                proposal.ClientEmail, proposal.ClientPIN);
 
-            var result = dbProposals.Save(database);
+            //todo: transaction...
+            //database.BeginTransaction();
+
+            try
+            {
+                var dbProposals = new DbProposals(proposal.ID, proposal.ProposalName, DateTime.Now, Home.AppUser.ID,
+                    proposal.CompanyName, proposal.CompanyAddress, proposal.CompanyCity, proposal.CompanyPIN, proposal.CompanyPhone, proposal.CompanyFax,
+                    proposal.CompanyEmail, proposal.CompanyIBAN, proposal.ClientName, proposal.ClientAddress, proposal.ClientCity, proposal.ClientPhone,
+                    proposal.ClientEmail, proposal.ClientPIN, proposal.ItemsTitle);
+
+                var proposalId = dbProposals.Save(database);
+                if (proposalId != -1)
+                {
+                    //prošao insert/update...
+                    //update - postavi porposalId na id koji se prenosi iz proposal
+                    if (proposalId == 0) proposalId = proposal.ID;
+
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        //todo: item id za update!!...
+                        var dbItems = new DbItems(items[i].ID, proposalId, items[i].ItemNumber, items[i].ItemText, items[i].Unit,
+                            items[i].Quantity, items[i].UnitPrice, items[i].TotalPrice);
+
+                        var res = dbItems.Save(database);
+
+                        if (!res)
+                        {
+                            result = false;
+                            break;
+                        }
+                    }
+
+                    result = true;
+                    //database.Commit();
+                }
+            }
+            catch
+            {
+                //database.Rollback();
+            }          
 
             database.Close();
             database.Dispose();
             database = null;
 
-            return result ? "OK" : "Greška pri spremanju u bazu podataka!";
+            return result ? "OK" : "Error saving proposal!";
         }
 
         //[WebMethod]

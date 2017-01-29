@@ -112,7 +112,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB\Connection.cs" />
     <Compile Include="DB\DbItems.cs" />
     <Compile Include="DB\DbProposals.cs" />
     <Compile Include="DB\DbUser.cs" />

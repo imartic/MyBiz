@@ -144,6 +144,7 @@ $('#btnAddItem').click(function () {
 //spremanje
 $('.saveProposal').click(function () {
     var proposal = getData();
+    var items = getItems();
     //provjere
     if (proposal.ProposalName == "" || proposal.ProposalName == null) {
         alert("Proposal name cannot be empty!");
@@ -165,7 +166,7 @@ $('.saveProposal').click(function () {
     $.ajax({
         type: "POST",
         url: "NewEditProposal.aspx/SaveProposal",
-        data: "{proposal:" + JSON.stringify(proposal) + "}",
+        data: "{proposal:" + JSON.stringify(proposal) + ", items:" + JSON.stringify(items) + "}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
@@ -202,6 +203,26 @@ function getData() {
         ClientPhone: $("#clientPhone").val(),
         ClientEmail: $("#clientEmail").val(),
         ClientPIN: $("#clientPIN").val(),
+        ItemsTitle: $("#itemsTitle").val()
     };
     return proposal;
+}
+
+function getItems() {
+    var items = [];
+    $.each($(".item"), function () {
+        var item = {
+            ID: 0,
+            ProposalID: editId,
+            ItemNumber: $(this).children().find("input[id^='itemNumber']").val(),
+            ItemText: $(this).children().find("input[id^='itemText']").val(),
+            Unit: $(this).children().find("input[id^='itemUnit']").val(),
+            Quantity: $(this).children().find("input[id^='itemQuantity']").val(),
+            UnitPrice: $(this).children().find("input[id^='itemPrice']").val(),
+            TotalPrice: $(this).children().find("input[id^='itemTotalPrice']").val()
+        };
+        items.push(item);
+    });
+    
+    return items;
 }
