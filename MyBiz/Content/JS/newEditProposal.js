@@ -7,9 +7,60 @@ $(document).ready(function () {
     $('.company-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Company data</span>")
     $('.client-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Client data</span>")
     $('.items-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Items</span>")
+
+    getParam('id');
+    if (editId > 0) loadProposal();
+
+    //todo: loadItems...
 });
 
 
+function getParam(name) {
+    var id = (location.search.split(name + '=')[1] || '').split('&')[0];
+    editId = (id != "") ? parseInt(id) : 0; 
+}
+
+
+function loadProposal() {
+    $.ajax({
+        type: "POST",
+        url: "NewEditProposal.aspx/LoadProposal",
+        data: "{id:" + editId + "}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var proposal = jQuery.parseJSON(data.d);
+
+            fillEdit(proposal);
+        },
+        error: function (res) {
+            alert(res.responseText);
+        }
+    });
+}
+
+function fillEdit(proposal) {
+    $('#proposalTitle').text(proposal.ProposalName);
+    $('#proposalName').val(proposal.ProposalName);
+    $('#company').val(proposal.CompanyName);
+    $('#companyAddress').val(proposal.CompanyAddress);
+    $('#companyCity').val(proposal.CompanyCity);
+    $('#companyPhone').val(proposal.CompanyPhone);
+    $('#companyFax').val(proposal.CompanyFax);
+    $('#companyEmail').val(proposal.CompanyEmail);
+    $('#companyPIN').val(proposal.CompanyPIN);
+    $('#companyIBAN').val(proposal.CompanyIBAN);
+    $('#client').val(proposal.ClientName);
+    $('#clientAddress').val(proposal.ClientAddress);
+    $('#clientCity').val(proposal.ClientCity);
+    $('#clientPhone').val(proposal.ClientPhone);
+    $('#clientEmail').val(proposal.ClientEmail);
+    $('#clientPIN').val(proposal.ClientPIN);
+    $('#itemsTitle').val(proposal.ItemsTitle);
+}
+
+
+//--------- toggle sections ------------
 $('.company-section').click(function () {
     toggleContent($(this), "Company data");
 });
@@ -22,7 +73,6 @@ $('.client-section').click(function () {
 $('.items-section').click(function () {
     toggleContent($(this), "Items");
 });
-
 
 function toggleContent(section, title){
     $header = section;
@@ -40,14 +90,7 @@ function toggleContent(section, title){
         });
     });
 }
-
-
-//btn for going one page back
-//$("#proposal_arrowBack").click(function (e) {
-//    e.preventDefault();
-//    history.back(1);
-//})
-
+//--------------------------------------
 
 
 $('.exportProposal').click(function () {
@@ -145,6 +188,8 @@ $('#btnAddItem').click(function () {
 $('.saveProposal').click(function () {
     var proposal = getData();
     var items = getItems();
+
+    console.log(proposal, items);
     //provjere
     if (proposal.ProposalName == "" || proposal.ProposalName == null) {
         alert("Proposal name cannot be empty!");
@@ -156,7 +201,6 @@ $('.saveProposal').click(function () {
         $("#company").focus();
         return;
     }
-
     if (proposal.ClientName == "" || proposal.ClientName == null) {
         alert("Client name cannot be empty!");
         $("#client").focus();

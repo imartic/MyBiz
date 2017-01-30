@@ -153,7 +153,7 @@
 
         <script src="Content/jquery-3.1.1.min.js"></script>
         <script src="Content/mdl-v1.1.2/material.min.js"></script>
-        <script src="Content/JS/proposals.js"></script>
         <script src="Content/JS/common.js"></script>
+        <script src="Content/JS/proposals.js"></script>
 </body>
 </html>

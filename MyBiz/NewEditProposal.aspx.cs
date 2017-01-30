@@ -39,6 +39,14 @@ namespace MyBiz
         }
 
         [WebMethod]
+        public static string LoadProposal(Int32 id)
+        {
+            var proposal = DbProposals.Load(id);
+            var json = new JavaScriptSerializer();
+            return json.Serialize(proposal);
+        }
+
+        [WebMethod]
         public static string SaveProposal(DbProposals proposal, DbItems[] items)
         {
             var result = false;

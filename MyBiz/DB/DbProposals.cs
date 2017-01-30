@@ -74,12 +74,12 @@ namespace MyBiz.Data
             return result;
         }
 
-        public static DbProposals Load(string query, Dbase database = null)
+        public static DbProposals Load(Int32 id, Dbase database = null)
         {
-            //var sql = SQL + @" WHERE (Username=@Username) AND (Password=@Password) ORDER BY Name";
-            //var di = new DbItem("Username", username, "Password", password);
+            var sql = SQL + @" WHERE ID=@ID";
+            var di = new DbItem("ID", id);
             DbProposals result = null;
-            var dc = DbaseTools.ExecuteQuery<DbProposals>(database/*, sql, di*/);
+            var dc = DbaseTools.ExecuteQuery<DbProposals>(database, sql, di);
             if (dc.Count > 0) result = dc[0];
             return result;
         }

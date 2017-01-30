@@ -14,9 +14,9 @@ namespace MyBiz.Data
         public string ItemNumber { get; set; }
         public string ItemText { get; set; }
         public string Unit { get; set; }
-        public float Quantity { get; set; }
-        public float UnitPrice { get; set; }
-        public float TotalPrice { get; set; }
+        public float? Quantity { get; set; }
+        public float? UnitPrice { get; set; }
+        public float? TotalPrice { get; set; }
 
 
     public DbItems()
@@ -24,7 +24,7 @@ namespace MyBiz.Data
 		{
     }
 
-    public DbItems(Int32 _ID, Int32 _ProposalID, string _ItemNumber, string _ItemText, string _Unit, float _Quantity, float _UnitPrice, float _TotalPrice)
+    public DbItems(Int32 _ID, Int32 _ProposalID, string _ItemNumber, string _ItemText, string _Unit, float? _Quantity, float? _UnitPrice, float? _TotalPrice)
 			: base()		
 		{
         ID = _ID;
