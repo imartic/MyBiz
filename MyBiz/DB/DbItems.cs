@@ -14,9 +14,9 @@ namespace MyBiz.Data
         public string ItemNumber { get; set; }
         public string ItemText { get; set; }
         public string Unit { get; set; }
-        public float? Quantity { get; set; }
-        public float? UnitPrice { get; set; }
-        public float? TotalPrice { get; set; }
+        public decimal? Quantity { get; set; }
+        public decimal? UnitPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
 
 
     public DbItems()
@@ -24,7 +24,7 @@ namespace MyBiz.Data
 		{
     }
 
-    public DbItems(Int32 _ID, Int32 _ProposalID, string _ItemNumber, string _ItemText, string _Unit, float? _Quantity, float? _UnitPrice, float? _TotalPrice)
+    public DbItems(Int32 _ID, Int32 _ProposalID, string _ItemNumber, string _ItemText, string _Unit, decimal? _Quantity, decimal? _UnitPrice, decimal? _TotalPrice)
 			: base()		
 		{
         ID = _ID;
@@ -44,10 +44,11 @@ namespace MyBiz.Data
     }
 
     private const string SQL = @"SELECT ID, ProposalID, ItemNumber, ItemText, Unit, Quantity, UnitPrice, TotalPrice FROM Items";
-    public static DbCollection<DbItems> LoadAll(Dbase database = null)
+    public static DbCollection<DbItems> LoadAll(int proposalId, Dbase database = null)
     {
-        var sql = SQL + @" ORDER BY ID DESC";
-        var result = DbaseTools.ExecuteQuery<DbItems>(database, sql);
+        var sql = SQL + @" WHERE ProposalID=@ProposalID ORDER BY ID";
+        var di = new DbItem("ProposalID", proposalId);
+        var result = DbaseTools.ExecuteQuery<DbItems>(database, sql, di);
         return result;
     }
 
@@ -61,10 +62,11 @@ namespace MyBiz.Data
         return result;
     }
 
-    public bool Delete()
+    public bool Delete(Int32 itemId, Dbase database = null)
     {
         var sql = @"DELETE FROM Items WHERE ID=@ID";
-        return DbaseTools.ExecuteNonQuery(null, sql, this);
+        var di = new DbItem("ID", itemId);
+        return DbaseTools.ExecuteNonQuery(database, sql, di);
     }
 
     public bool Save(Dbase database = null)

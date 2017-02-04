@@ -101,3 +101,16 @@ hr {
 .mdl-textfield__label{
     color: rgb(15, 49, 109);
 }
+
+/*mdl-card (optimizirati za mobitele)*/
+.mdl-card--horizontal {
+    flex-direction: row;
+    width: 100%;
+    margin-bottom:10px;
+    min-height:0;
+}
+.item .proposalInput{
+    flex: auto;
+    margin-bottom:0;
+}
+/*********/
