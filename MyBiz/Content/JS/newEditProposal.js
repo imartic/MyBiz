@@ -169,6 +169,8 @@ function addItem() {
     clone.show(200, function () {
         componentHandler.upgradeAllRegistered();
     });
+
+    $('#itemNumber' + (num + 1)).val(num + 2).parent().addClass('is-dirty');
 }
 
 //dodavanje stavki...

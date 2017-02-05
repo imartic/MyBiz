@@ -92,10 +92,11 @@ namespace MyBiz.Data
             return result;
         }
 
-        public bool Delete()
+        public bool Delete(int id, Dbase database = null)
         {
             var sql = @"DELETE FROM Proposals WHERE ID=@ID";
-            return DbaseTools.ExecuteNonQuery(null, sql, this);
+            var di = new DbItem("ID", id);
+            return DbaseTools.ExecuteNonQuery(database, sql, di);
         }
 
         public int Save(Dbase database = null)

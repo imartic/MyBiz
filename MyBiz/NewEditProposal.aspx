@@ -210,7 +210,7 @@
                                 <%--ne koristim mdl-card jer nije bas responsive za mobitele--%>
                                 <div id="item0" class="item <%--mdl-card mdl-card--horizontal mdl-shadow--2dp--%> full-width"> 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemNumberDiv0" style="min-width:30px">
-                                        <input class="mdl-textfield__input" type="text" id="itemNumber0"/>
+                                        <input class="mdl-textfield__input" type="text" id="itemNumber0" value="1"/>
                                         <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemNumber0">#</label>
                                     </div> 
                                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--5-col" id="itemTextDiv0" style="min-width:200px">

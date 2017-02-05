@@ -24,6 +24,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    </form>
 
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
@@ -104,44 +105,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!--<tr>
-                                <td class="mdl-data-table__cell--non-numeric">Vukovarska 50</td>
-                                <td>25.11.2016</td>
-                                <td>
-                                    <button class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--primary-dark"
-                                            id="editProposal"
-                                            style="margin-left:auto;"
-                                            onclick="window.location.href=''; return false;">
-                                        <i class="material-icons">create</i>
-                                    </button>
-                                    <div class="mdl-tooltip" for="editProposal">Edit Proposal</div>
-                                </td>
-                                <td>
-                                    <button class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--red"
-                                            id="deleteProposal"
-                                            style="margin-left:auto;"
-                                            onclick="window.location.href=''; return false;">
-                                        <i class="material-icons">delete</i>
-                                    </button>
-                                    <div class="mdl-tooltip" for="deleteProposal">Delete Proposal</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="mdl-data-table__cell--non-numeric">g. Ivo Ivić</td>
-                                <td>4.10.2016</td>
-                            </tr>
-                            <tr>
-                                <td class="mdl-data-table__cell--non-numeric">Tvrtka2 d.o.o.</td>
-                                <td>10.8.2016</td>
-                            </tr>
-                            <tr>
-                                <td class="mdl-data-table__cell--non-numeric">Opatija</td>
-                                <td>1.7.2016</td>
-                            </tr>
-                            <tr>
-                                <td class="mdl-data-table__cell--non-numeric">g. Babić</td>
-                                <td>17.6.2016</td>
-                            </tr>-->
+                           
                         </tbody>
                     </table>
 
@@ -149,7 +113,6 @@
             </div>
         </main>
         </div>
-        </form>
 
         <script src="Content/jquery-3.1.1.min.js"></script>
         <script src="Content/mdl-v1.1.2/material.min.js"></script>

@@ -69,6 +69,13 @@ namespace MyBiz.Data
         return DbaseTools.ExecuteNonQuery(database, sql, di);
     }
 
+    public bool DeleteByProposalId(Int32 proposalId, Dbase database = null)
+    {
+        var sql = @"DELETE FROM Items WHERE ProposalID=@PropoosalID";
+        var di = new DbItem("ProposalID", proposalId);
+        return DbaseTools.ExecuteNonQuery(database, sql, di);
+    }
+
     public bool Save(Dbase database = null)
     {
         var result = false;
