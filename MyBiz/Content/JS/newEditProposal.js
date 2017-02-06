@@ -9,6 +9,7 @@ $(document).ready(function () {
     $('.company-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Company data</span>")
     $('.client-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Client data</span>")
     $('.items-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Items</span>")
+    $('.summary-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Summary</span>")
 
     getParam('id');
     if (editId > 0) {
@@ -112,6 +113,10 @@ $('.items-section').click(function () {
     toggleContent($(this), "Items");
 });
 
+$('.summary-section').click(function () {
+    toggleContent($(this), "Summary");
+});
+
 function toggleContent(section, title){
     $header = section;
     //getting the next element
@@ -186,10 +191,12 @@ function deleteItem(btn) {
     var itemId = $(btn).attr('i-id');
     var id = parseInt(btn.id.match(/\d+/g), 10);
 
-    if (confirm('Are you sure you want to delete this item?')) {
-        $('#item' + id).remove();
-        deletedItems.push(parseInt(itemId));
-    }
+    if ($('.item').length > 1) {
+        if (confirm('Are you sure you want to delete this item?')) {
+            $('#item' + id).remove();
+            deletedItems.push(parseInt(itemId));
+        }
+    }    
 }
 
 //function deleteItemsFromDB() {
@@ -362,7 +369,7 @@ function onQuantityChange(input) {
 
     if($('#itemPrice'+id).val() != ''){
         var total = $(input).val() * $('#itemPrice' + id).val();
-        $('#itemTotalPrice' + id).val(total.toFixed(2)).parent().addClass('is-dirty');
+        $('#itemTotalPrice' + id).val(total.toFixed(2)).change().parent().addClass('is-dirty');
     }    
 }
 
@@ -372,6 +379,17 @@ function onPriceChange(input) {
 
     if($('#itemQuantity'+id).val() != ''){
         var total = $(input).val() * $('#itemQuantity' + id).val();
-        $('#itemTotalPrice' + id).val(total.toFixed(2)).parent().addClass('is-dirty');
+        $('#itemTotalPrice' + id).val(total.toFixed(2)).change().parent().addClass('is-dirty');
     }
+}
+
+function onTotalPriceChange(ctrl) {
+    var sum = 0;
+    $('.itemTotalPrice').each(function () {
+        sum += Number($(this).val());
+    });
+
+    $('#amount').text(sum.toFixed(2));
+    $('#tax').text((($('#amount').text()) * 0.25).toFixed(2));
+    $('#total').text(((parseFloat($('#amount').text())) + (parseFloat($('#tax').text()))).toFixed(2));
 }

@@ -63,7 +63,7 @@
             </nav>
         </div>
 
-        <main class="mdl-layout__content mdl-color--grey-50">
+        <main class="mdl-layout__content mdl-color--grey-200">
             <div class="page-content" id="page-content">Shedule</div>
         </main>
     </div>
