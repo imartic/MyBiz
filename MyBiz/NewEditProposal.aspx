@@ -112,39 +112,39 @@
 
                         <div class="company-data section-data mdl-card mdl-shadow--2dp full-width section-card">
                             <div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="company"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="company">Company name</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="companyAddress"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyAddress">Address</label>
-                            </div>
-                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="companyCity"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyCity">City</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="companyPhone"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyPhone">Phone number</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="companyFax"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyFax">Fax number</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="companyEmail"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyEmail">E-mail address</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="companyPIN"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyPIN">Personal Identification Number</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
-                                <input class="mdl-textfield__input" type="text" id="companyIBAN"/>
-                                <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyIBAN">IBAN</label>
-                            </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="company"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="company">Company name</label>
                                 </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="companyAddress"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyAddress">Address</label>
+                                </div>
+                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="companyCity"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyCity">City</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="companyPhone"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyPhone">Phone number</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="companyFax"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyFax">Fax number</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="companyEmail"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyEmail">E-mail address</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="companyPIN"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyPIN">Personal Identification Number</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
+                                    <input class="mdl-textfield__input" type="text" id="companyIBAN"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="companyIBAN">IBAN</label>
+                                </div>
+                            </div>
                         </div>
                         
 
@@ -195,56 +195,40 @@
                             <%--<hr />--%>
                             
                             <div class="items">
-                                <%--<table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width" id="itemsTable">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Item text</th>
-                                            <th>Unit</th>
-                                            <th>Quantity</th>
-                                            <th>Unit price</th>
-                                            <th>Total price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>--%>
-
                                 <%--ne koristim mdl-card jer nije bas responsive za mobitele--%>
                                 <div id="item0" class="item mdl-card mdl-card mdl-shadow--2dp full-width item-card"> 
                                     <div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemNumberDiv0" style="min-width:30px">
-                                        <input class="mdl-textfield__input" type="text" id="itemNumber0" value="1"/>
-                                        <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemNumber0">#</label>
-                                    </div> 
-                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--5-col" id="itemTextDiv0" style="min-width:200px">
-                                        <input class="mdl-textfield__input" type="text" <%--rows="2"--%> id="itemText0" ></input>
-                                        <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemText0">Item text</label>
-                                    </div> 
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemUnitDiv0" style="min-width:70px">
-                                        <input class="mdl-textfield__input" type="text" id="itemUnit0"/>
-                                        <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemUnit0">Unit</label>
-                                    </div> 
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemQuantityDiv0" style="min-width:70px">
-                                        <input type="number" step="any" min="0" class="mdl-textfield__input" type="text" id="itemQuantity0" onchange="onQuantityChange(this)"/>
-                                        <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemQuantity0">Quantity</label>
-                                    </div> 
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemPriceDiv0" style="min-width:70px">
-                                        <input type="number" step="any" min="0" class="mdl-textfield__input" type="text" id="itemPrice0" onchange="onPriceChange(this)"/>
-                                        <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemPrice0">Unit price</label>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemTotalPriceDiv0" style="min-width:75px">
-                                        <input type="number" step="any" min="0" class="mdl-textfield__input mdl-color-text--primary itemTotalPrice" type="text" id="itemTotalPrice0" disabled onchange="onTotalPriceChange(this)"/>
-                                        <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemTotalPrice0">Total price</label>
-                                    </div>    
-                                    <button type="button" class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--red" id="btnDeleteItem0" onclick="deleteItem(this)">
-                                        <i class="material-icons">delete</i>
-                                    </button>   
-                                    <div class="mdl-tooltip mdl-tooltip--right" for="btnDeleteItem0">Delete item</div>  
-                                    <%--<hr />--%>                      
-                                </div>   
-                                    </div>                                       
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemNumberDiv0" style="min-width:30px">
+                                            <input class="mdl-textfield__input" type="text" id="itemNumber0" value="1"/>
+                                            <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemNumber0">#</label>
+                                        </div> 
+                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--5-col" id="itemTextDiv0" style="min-width:200px">
+                                            <input class="mdl-textfield__input" type="text" <%--rows="2"--%> id="itemText0" ></input>
+                                            <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemText0">Item text</label>
+                                        </div> 
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemUnitDiv0" style="min-width:70px">
+                                            <input class="mdl-textfield__input" type="text" id="itemUnit0"/>
+                                            <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemUnit0">Unit</label>
+                                        </div> 
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemQuantityDiv0" style="min-width:70px">
+                                            <input type="number" step="any" min="0" class="mdl-textfield__input" type="text" id="itemQuantity0" onchange="onQuantityChange(this)"/>
+                                            <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemQuantity0">Quantity</label>
+                                        </div> 
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemPriceDiv0" style="min-width:70px">
+                                            <input type="number" step="any" min="0" class="mdl-textfield__input" type="text" id="itemPrice0" onchange="onPriceChange(this)"/>
+                                            <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemPrice0">Unit price</label>
+                                        </div>
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemTotalPriceDiv0" style="min-width:75px">
+                                            <input type="number" step="any" min="0" class="mdl-textfield__input mdl-color-text--primary itemTotalPrice" type="text" id="itemTotalPrice0" disabled onchange="onTotalPriceChange(this)"/>
+                                            <label class="mdl-textfield__label mdl-color-text--primary-dark" for="itemTotalPrice0">Total price</label>
+                                        </div>    
+                                        <button type="button" class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--red" id="btnDeleteItem0" onclick="deleteItem(this)">
+                                            <i class="material-icons">delete</i>
+                                        </button>   
+                                        <div class="mdl-tooltip mdl-tooltip--right" for="btnDeleteItem0">Delete item</div>  
+                                        <%--<hr />--%>                      
+                                    </div>   
+                                </div>                                       
                             </div>
 
                             <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent mdl-button--mini-fab mdl-color-text--primary-dark" id="btnAddItem" style="margin:10px" onclick="return false;">
@@ -252,32 +236,36 @@
                             </button>   
                             <div class="mdl-tooltip" for="btnAddItem">Add new item</div>  
 
-                        </div>
-
-
-                        <div class="section summary-section"><p class="sectionTitle">Summary</p></div>
-
-                        <!-- možda ovo prebacit u items, desno od gumba addItem -->
-                        <div class="total section-data">
-                            <div class="totalLabels">
-                                <div>
-                                    <label for="amount"><b>Amount:&nbsp;</b><span id="amount">0.00</span></label>
-                                </div>
-                                <div>
-                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="cbTax">
-                                        <input type="checkbox" id="cbTax" class="mdl-checkbox__input" checked>
-                                        <span class="mdl-checkbox__label"><b>Tax:&nbsp;</b><span id="tax">0.00</span></span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label for="total"><b>Total:&nbsp;</b><span id="total">0.00</span></label>
+                            <div class="total section-data">
+                                <div class="totalLabels">
+                                    <div>
+                                        <label for="amount"><b>Amount:&nbsp;</b><span id="amount">0.00</span></label>
+                                    </div>
+                                    <div>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="cbTax">
+                                            <input type="checkbox" id="cbTax" class="mdl-checkbox__input" checked>
+                                            <span class="mdl-checkbox__label"><b>Tax:&nbsp;</b><span id="tax">0.00</span></span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label for="total"><b>Total:&nbsp;</b><span id="total">0.00</span></label>
+                                    </div>
                                 </div>
                             </div>
 
+                        </div>
+
+
+                        <div class="section summary-section"><p class="sectionTitle">Note & Signature</p></div>
+                        <div class="section-data mdl-card mdl-card mdl-shadow--2dp full-width section-card">
                             <div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput" style="width:45%">
                                     <textarea class="mdl-textfield__input" type="text" rows= "3" id="note" ></textarea>
-                                    <label class="mdl-textfield__label mdl-color-text--primary" for="note">Note...</label>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="note">Note...</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput" style="float:right;width:45%">
+                                    <textarea class="mdl-textfield__input" type="text" rows= "3" id="signature" ></textarea>
+                                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="signature">Signature</label>
                                 </div>
                             </div>
                         </div>

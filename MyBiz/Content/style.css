@@ -61,6 +61,10 @@ hr {
     margin-top:28px;
 }
 
+.buttons-cell{
+    padding-right:13px !important;
+}
+
 .content .mdl-layout__header-row{
     padding:0;
 }
@@ -124,13 +128,23 @@ hr {
     min-height:10px;
     margin-bottom:10px;
 }
+
+.items-data{
+    margin-bottom:80px;
+}
 /*********/
 
 /* total */
 .total{
+    float:right;
     font-size:16px;
-    margin-top:20px;
+    text-align:right;
+    margin:0 10px 20px 0;
 }
 .total div{
     margin-top:10px;
 }
+
+
+/* summary section */
+

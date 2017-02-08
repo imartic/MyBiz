@@ -120,7 +120,7 @@ namespace MyBiz
             var dbProposals = new DbProposals(proposal.ID, proposal.ProposalName, DateTime.Now, Home.AppUser.ID,
                     proposal.CompanyName, proposal.CompanyAddress, proposal.CompanyCity, proposal.CompanyPIN, proposal.CompanyPhone, proposal.CompanyFax,
                     proposal.CompanyEmail, proposal.CompanyIBAN, proposal.ClientName, proposal.ClientAddress, proposal.ClientCity, proposal.ClientPhone,
-                    proposal.ClientEmail, proposal.ClientPIN, proposal.ItemsTitle);
+                    proposal.ClientEmail, proposal.ClientPIN, proposal.ItemsTitle, proposal.Amount, proposal.Tax, proposal.Total, proposal.Note, proposal.Signature);
 
             var db = DbaseTools.CreateDbase();
             try

@@ -28,6 +28,11 @@ namespace MyBiz.Data
         public string ClientEmail { get; set; }
         public Int64? ClientPIN { get; set; }
         public string ItemsTitle { get; set; }
+        public decimal? Amount { get; set; }
+        public decimal? Tax { get; set; }
+        public decimal? Total { get; set; }
+        public string Note { get; set; }
+        public string Signature { get; set; }
 
 
         public DbProposals()
@@ -35,7 +40,10 @@ namespace MyBiz.Data
         {
         }
 
-        public DbProposals(Int32 _ID, string _ProposalName, DateTime _DateSaved, Int32 _UserID, string _CompanyName, string _CompanyAddress, string _CompanyCity, Int64? _CompanyPIN, string _CompanyPhone, string _CompanyFax, string _CompanyEmail, string _CompanyIBAN, string _ClientName, string _ClientAddress, string _ClientCity, string _ClientPhone, string _ClientEmail, Int64? _ClientPIN, string _ItemsTitle)
+        public DbProposals(Int32 _ID, string _ProposalName, DateTime _DateSaved, Int32 _UserID, string _CompanyName, string _CompanyAddress, string _CompanyCity, 
+            Int64? _CompanyPIN, string _CompanyPhone, string _CompanyFax, string _CompanyEmail, string _CompanyIBAN, string _ClientName, string _ClientAddress, 
+            string _ClientCity, string _ClientPhone, string _ClientEmail, Int64? _ClientPIN, string _ItemsTitle, decimal? _Amount, decimal? _Tax, decimal? _Total, 
+            string _Note, string _Signature)
                 : base()
         {
             ID = _ID;
@@ -57,6 +65,11 @@ namespace MyBiz.Data
             ClientEmail = _ClientEmail;
             ClientPIN = _ClientPIN;
             ItemsTitle = _ItemsTitle;
+            Amount = _Amount;
+            Tax = _Tax;
+            Total = _Total;
+            Note = _Note;
+            Signature = _Signature;
 
         }
 
@@ -65,7 +78,10 @@ namespace MyBiz.Data
         {
         }
 
-        private const string SQL = @"SELECT ID, ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN, ItemsTitle FROM Proposals";
+        private const string SQL = @"SELECT ID, ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, 
+                                                CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN, ItemsTitle,
+                                                Amount, Tax, Total, Note, Signature 
+                                    FROM Proposals";
         public static DbCollection<DbProposals> LoadAll(int userId, Dbase database = null)
         {
             var sql = SQL + @" WHERE UserID=@UserID ORDER BY DateSaved DESC";
@@ -103,8 +119,16 @@ namespace MyBiz.Data
         {
             var result = false;
             var id = 0;
-            var sqlu = @"UPDATE Proposals SET ProposalName=@ProposalName, DateSaved=@DateSaved, CompanyName=@CompanyName, CompanyAddress=@CompanyAddress, CompanyCity=@CompanyCity, CompanyPIN=@CompanyPIN, CompanyPhone=@CompanyPhone, CompanyFax=@CompanyFax, CompanyEmail=@CompanyEmail, CompanyIBAN=@CompanyIBAN, ClientName=@ClientName, ClientAddress=@ClientAddress, ClientCity=@ClientCity, ClientPhone=@ClientPhone, ClientEmail=@ClientEmail, ClientPIN=@ClientPIN, ItemsTitle=@ItemsTitle WHERE ID=@ID AND UserID=@UserID";
-            var sqli = @"INSERT INTO Proposals (ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN, ItemsTitle) VALUES (@ProposalName, @DateSaved, @UserID, @CompanyName, @CompanyAddress, @CompanyCity, @CompanyPIN, @CompanyPhone, @CompanyFax, @CompanyEmail, @CompanyIBAN, @ClientName, @ClientAddress, @ClientCity, @ClientPhone, @ClientEmail, @ClientPIN, @ItemsTitle)";
+            var sqlu = @"UPDATE Proposals SET ProposalName=@ProposalName, DateSaved=@DateSaved, CompanyName=@CompanyName, CompanyAddress=@CompanyAddress, 
+                                CompanyCity=@CompanyCity, CompanyPIN=@CompanyPIN, CompanyPhone=@CompanyPhone, CompanyFax=@CompanyFax, CompanyEmail=@CompanyEmail, 
+                                CompanyIBAN=@CompanyIBAN, ClientName=@ClientName, ClientAddress=@ClientAddress, ClientCity=@ClientCity, ClientPhone=@ClientPhone, 
+                                ClientEmail=@ClientEmail, ClientPIN=@ClientPIN, ItemsTitle=@ItemsTitle, Amount=@Amount, Tax=@Tax, Total=@Total,
+                                Note=@Note, Signature=@Signature 
+                        WHERE ID=@ID AND UserID=@UserID";
+            var sqli = @"INSERT INTO Proposals (ProposalName, DateSaved, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, 
+                                CompanyIBAN, ClientName, ClientAddress, ClientCity, ClientPhone, ClientEmail, ClientPIN, ItemsTitle, Amount, Tax, Total, Note, Signature) 
+                        VALUES (@ProposalName, @DateSaved, @UserID, @CompanyName, @CompanyAddress, @CompanyCity, @CompanyPIN, @CompanyPhone, @CompanyFax, @CompanyEmail, 
+                                @CompanyIBAN, @ClientName, @ClientAddress, @ClientCity, @ClientPhone, @ClientEmail, @ClientPIN, @ItemsTitle, @Amount, @Tax, @Total, @Note, @Signature)";
 
             var closeDb = (database == null);
             Db = DbaseTools.CreateDbase(database);

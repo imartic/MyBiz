@@ -84,6 +84,18 @@ function fillEdit(proposal) {
     $('#clientEmail').val(proposal.ClientEmail);
     $('#clientPIN').val(proposal.ClientPIN);
     $('#itemsTitle').val(proposal.ItemsTitle);
+    $('#amount').text(proposal.Amount);
+    if (proposal.Tax != 0) {
+        $('#tax').text(proposal.Tax);
+        $('#cbTax').prop('checked', true);
+    }
+    else {
+        $('#tax').hide();
+        $('#cbTax').prop('checked', false);
+    }
+    $('#total').text(proposal.Total);
+    $('#note').val(proposal.Note);
+    $('#signature').val(proposal.Signature);
 }
 
 function fillEditItems(item, i) {
@@ -224,7 +236,6 @@ $('.saveProposal').click(function () {
     var proposal = getData();
     var items = getItems();
 
-    console.log(proposal, items);
     //provjere
     if (proposal.ProposalName == "" || proposal.ProposalName == null) {
         alert("Proposal name cannot be empty!");
@@ -284,7 +295,12 @@ function getData() {
         ClientPhone: $("#clientPhone").val(),
         ClientEmail: $("#clientEmail").val(),
         ClientPIN: $("#clientPIN").val(),
-        ItemsTitle: $("#itemsTitle").val()
+        ItemsTitle: $("#itemsTitle").val(),
+        Amount: $('#amount').text(),
+        Tax: ($('#cbTax').is(':checked')) ? $('#tax').text() : 0,
+        Total: $('#total').text(),
+        Note: $('#note').val(),
+        Signature: $('#signature').val()
     };
     return proposal;
 }
@@ -390,6 +406,20 @@ function onTotalPriceChange(ctrl) {
     });
 
     $('#amount').text(sum.toFixed(2));
+    calcTaxAndTotal();
+}
+
+$('#cbTax').click(function () {
+    if ($(this).is(':checked')) {
+        $('#tax').show();
+        calcTaxAndTotal();
+    } else {
+        $('#tax').hide();
+        $('#total').text(parseFloat($('#amount').text()));
+    }
+})
+
+function calcTaxAndTotal() {
     $('#tax').text((($('#amount').text()) * 0.25).toFixed(2));
     $('#total').text(((parseFloat($('#amount').text())) + (parseFloat($('#tax').text()))).toFixed(2));
 }

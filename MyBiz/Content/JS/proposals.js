@@ -24,7 +24,7 @@ function loadProposals() {
                             "<td class='mdl-data-table__cell--non-numeric'>" + proposals[i].ProposalName + "</td>" +
                             "<td class='mdl-data-table__cell--non-numeric'>" + proposals[i].ClientName + "</td>" +
                             "<td class='mdl-data-table__cell--non-numeric'>" + ToJavaScriptDate(proposals[i].DateSaved) + "</td>" +
-                            "<td>" + setIconTooltips(proposals[i].ID) + "</td>" +
+                            "<td class='buttons-cell'>" + setIconTooltips(proposals[i].ID) + "</td>" +
                             "</tr>";
                     }
                     if (txt != "") {
