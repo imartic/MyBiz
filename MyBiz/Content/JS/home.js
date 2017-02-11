@@ -19,11 +19,11 @@ function loadProposals() {
                 if (len > 0) {
                     $(".mdl-spinner").remove();
                     for (var i = 0; i < len; i++) {
-                        txt += "<tbody><tr><td class='mdl-data-table__cell--non-numeric'>" +
+                        txt += "<tr><td class='mdl-data-table__cell--non-numeric'>" +
                             proposals[i].ProposalName +
                             "</td><td>" +
                             ToJavaScriptDate(proposals[i].DateSaved) +
-                            "</td></tr></tbody>";
+                            "</td></tr>";
                     }
                     if (txt != "") {
                         $(".homeProposalsTbl").show();
@@ -35,7 +35,7 @@ function loadProposals() {
                     //$(".mdl-spinner").remove();
                     $(".homeProposalsTbl").hide();
                     $(".homeProposals .mdl-button--raised").hide();
-                    $(".homeProposals").append("<p style = 'margin: 10px'><b>No saved proposals.</b></p>");
+                    $(".homeProposals tbody").append("<p style = 'margin: 10px'><b>No saved proposals.</b></p>");
                 }
             }
         },

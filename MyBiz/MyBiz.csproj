@@ -46,6 +46,10 @@
     <Reference Include="ABsistemLibrary.Data">
       <HintPath>D:\FAKS\Završni\dll\ABsistemLibrary.Data.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>D:\FAKS\Završni\dll\log4net.dll</HintPath>
     </Reference>
@@ -79,6 +83,7 @@
     <Content Include="Content\JS\proposals.js" />
     <Content Include="Content\login.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Download.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
@@ -115,6 +120,13 @@
     <Compile Include="DB\DbItems.cs" />
     <Compile Include="DB\DbProposals.cs" />
     <Compile Include="DB\DbUser.cs" />
+    <Compile Include="Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

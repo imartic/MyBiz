@@ -273,12 +273,12 @@
                     </form>
 
 
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns saveProposal" 
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns" id="btnSave" 
                             onclick="return false;">
                         Save proposal
                     </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns exportProposal" 
-                            onclick="return false;">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns" id="btnExport" 
+                            onclick="return false;" disabled>
                         Export proposal
                     </button>
 

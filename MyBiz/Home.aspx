@@ -88,8 +88,8 @@
                         </div>
 
                             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp homeProposalsTbl">
-                                <!--<tbody class="homeProposalsTbody">
-                                    <tr>
+                                <tbody class="homeProposalsTbody">
+                                    <!--<tr>
                                         <td class="mdl-data-table__cell--non-numeric">Vukovarska 50</td>
                                         <td>25.11.2016</td>
                                     </tr>
@@ -100,8 +100,8 @@
                                     <tr>
                                         <td class="mdl-data-table__cell--non-numeric">Tvrtka d.o.o.</td>
                                         <td>10.8.2016</td>
-                                    </tr>
-                                </tbody>-->
+                                    </tr>-->
+                                </tbody>
                             </table>
 
                             <!-- Accent-colored raised button with ripple -->

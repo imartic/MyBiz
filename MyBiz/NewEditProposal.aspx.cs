@@ -163,7 +163,7 @@ namespace MyBiz
                     }
 
                     db.Commit();
-                    result = "OK";
+                    result = "OK_" + proposalId.ToString();
                 }
                 else
                 {
@@ -183,50 +183,60 @@ namespace MyBiz
             }
 
             return result /*? "OK" : "Error saving proposal!"*/;
-        } 
+        }
         #endregion
 
-        //[WebMethod]
-        //public static string[] ExportProposal()
-        //{
-        //string[] result = new string[2] { "", "" };
+        [WebMethod]
+        public static string[] ExportProposal(int proposalId)
+        {
+            string[] result = new string[2] { "", "" };
 
-        //if (obj == null || obj.proposalID == 0)
-        //{
-        //    result[0] = "proposal not saved";
-        //    return result;
-        //}
+            if (proposalId < 1)
+            {
+                result[0] = "Proposal not saved!";
+                return result;
+            }
 
-        //if (xlApp == null)
-        //{
-        //    result[0] = "excel not installed";
-        //    return result;
-        //}
+            var proposal = DbProposals.Load(proposalId);
+            var items = DbItems.LoadAll(proposalId);         
 
-        //var xlWorkBook = xlApp.Workbooks.Add();
-        //Excel.Range chartRange;
+            if (proposal == null)
+            {
+                result[0] = "No proposal!";
+                return result;
+            }
 
-        //var xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-        //xlWorkSheet.get_Range("b2", "e3").Merge(false);
-        //chartRange = xlWorkSheet.get_Range("b2", "e3");
-        //chartRange.FormulaR1C1 = obj.company + "\n" + obj.companyAddress + "\n" + obj.companyPhone;
+            if (xlApp == null)
+            {
+                result[0] = "To export proposals Microsoft Excel needs to be installed on your computer!";
+                return result;
+            }
 
-        //xlWorkBook.SaveAs("D:\\" + obj.proposalName + ".xls");
+            var xlWorkBook = xlApp.Workbooks.Add();
+            var xlName = proposal.ProposalName;
+            Excel.Range chartRange;
 
-        //xlWorkBook.Close(true);
-        //xlApp.Quit();
+            var xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            xlWorkSheet.get_Range("b2", "e3").Merge(false);
+            chartRange = xlWorkSheet.get_Range("b2", "e3");
+            chartRange.FormulaR1C1 = proposal.CompanyName + "\n" + proposal.CompanyAddress + "\n" + proposal.CompanyCity;
 
-        //if (File.Exists("D:\\" + obj.proposalName + ".xls"))
-        //{
-        //    result[0] = "exported";
-        //    result[1] = obj.proposalName.ToString() + ".xls";
-        //}
+            xlWorkBook.SaveAs("D:\\" + xlName + ".xls");
 
-        //Marshal.ReleaseComObject(xlWorkSheet);
-        //Marshal.ReleaseComObject(xlWorkBook);
-        //Marshal.ReleaseComObject(xlApp);
+            xlWorkBook.Close(true);
+            xlApp.Quit();
 
-        //return result;
-        //}
+            if (File.Exists("D:\\" + xlName + ".xls"))
+            {
+                result[0] = "Proposal exported!";
+                result[1] = xlName + ".xls";
+            }
+
+            Marshal.ReleaseComObject(xlWorkSheet);
+            Marshal.ReleaseComObject(xlWorkBook);
+            Marshal.ReleaseComObject(xlApp);
+
+            return result;
+        }
     }
 }

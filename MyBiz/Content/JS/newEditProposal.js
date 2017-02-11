@@ -58,6 +58,8 @@ function loadItems() {
                     addItem();
                 }
                 fillEditItems(items[i], i);
+
+                $('#btnExport').prop('disabled', false);
             }
         },
         error: function (res) {
@@ -231,8 +233,8 @@ function deleteItem(btn) {
 //}
 
 
-//spremanje
-$('.saveProposal').click(function () {
+//======= SAVE ========
+$('#btnSave').click(function () {
     var proposal = getData();
     var items = getItems();
 
@@ -263,9 +265,13 @@ $('.saveProposal').click(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            if (data.d == "OK") {
-                alert("Proposal saved!");
-                window.location = "Proposals.aspx";
+            if (data.d.substring(0, 2) == "OK") {
+                alert("Proposal saved!", data);
+                //window.location = "Proposals.aspx";
+
+                var id = parseInt(data.d.replace(/[^0-9\.]/g, ''), 10);
+                editId = id;
+                $('#btnExport').prop('disabed', false);
             }
             else {
                 alert(data.d);
@@ -323,34 +329,24 @@ function getItems() {
     
     return items;
 }
+//=======================
 
+//========= EXPORT ==========
+$('#btnExport').click(function () {
+    //exportProposal();
 
-$('.exportProposal').click(function () {
-    //saveProposal();
-    exportProposal();
+    if (editId > 0) {
+        //window.location = 'Download.aspx?id=' + eventId + '?type=' + type;
+        var win = window.open('Download.aspx?id=' + editId, '_blank');
+        win.focus();
+    }
 });
 
 function exportProposal() {
-    //var resultToExport = "";
-
-    //$.each(objProposal, function (key, value) {
-    //    console.log("KEY: " + key + " | " + "VALUE: " + value);
-
-    //    if (resultToExport.length > 0) resultToExport += "|";
-    //    resultToExport += key + ":" + value;
-    //    //console.log('i = ' + counter + ' | obj = ' + Object.keys(objQandA).length)
-    //    //if (counter == Object.keys(objQandA).length) {
-    //    //    //console.log("QuestionID: " + key + " | EmployeeID: " + value);
-
-    //    //    //spremanje u bazu ...
-    //    //    readyToSave = true;
-    //    //}
-    //});
-
     $.ajax({
         type: "POST",
         url: "NewEditProposal.aspx/ExportProposal",
-        //data: "{objQandA:" + JSON.stringify(objQandA) + "}",
+        data: "{proposalId:" + editId + "}",
         data: "{}",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -376,7 +372,7 @@ function exportProposal() {
         }
     });
 }
-
+//====================
 
 
 function onQuantityChange(input) {
