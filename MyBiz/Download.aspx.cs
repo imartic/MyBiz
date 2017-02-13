@@ -34,20 +34,6 @@ namespace MyBiz
 
                         CreateExcel(proposal);
                     }
-
-                    //if (tickets != null)
-                    //{
-                    //    if (database.Opened) database.Close();
-
-                    //    HttpResponse response = HttpContext.Current.Response;
-                    //    response.ClearContent();
-                    //    response.Clear();
-                    //    Response.AddHeader("Content-Disposition", "attachment; filename=" + fileName);
-                    //    Response.ContentType = "text/xml";
-                    //    Response.Write(xml.ToString());
-                    //    response.Flush();
-                    //    response.End();
-                    //}
                 }
             }
         }
@@ -61,8 +47,6 @@ namespace MyBiz
                 //Create the worksheet
                 ExcelWorksheet ws = pck.Workbook.Worksheets.Add(fileName);
 
-                //todo: fit to a4 page...
-                ws.PrinterSettings.FitToPage = true;
 
                 //Company
                 ws.Cells["A1"].Value = proposal.CompanyName;
@@ -124,7 +108,7 @@ namespace MyBiz
                 ws.Cells["A18"].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
                 ws.Cells["A18"].Style.Font.UnderLine = true;
 
-                ws.Cells["A21"].Value = "BR.";
+                ws.Cells["A21"].Value = "BR."; //todo: jezik proslijediti iz postavki...
                 ws.Cells["B21"].Value = "NAZIV ARTIKLA/USLUGE";
                 ws.Cells["C21"].Value = "J. MJ.";
                 ws.Cells["D21"].Value = "KOL.";
@@ -135,9 +119,9 @@ namespace MyBiz
 
                 //Items
                 var items = DbItems.LoadAll(proposalId);
-                if(items != null && items.Count > 0)
+                var row = 22;
+                if (items != null && items.Count > 0)
                 {
-                    var row = 22;
                     for(int i = 0; i < items.Count; i++)
                     {
                         ws.Cells["A" + row].Value = items[i].ItemNumber;
@@ -149,16 +133,89 @@ namespace MyBiz
 
                         row++;
                     }
+                    ws.Cells["D" + 22 + ":F" + row].Style.Numberformat.Format = "0.00";
+
+                    ws.Cells["A" + (row - 1) + ":F" + (row - 1)].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+
+                    //Total
+                    ws.Cells["E" + (row + 2)].Value = "IZNOS:";
+                    ws.Cells["F" + (row + 2)].Value = proposal.Amount + " kn"; //todo: valutu proslijediti iz postavki...
+                    ws.Cells["F" + (row + 2)].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                    ws.Cells["F" + (row + 2)].Style.Numberformat.Format = "0.00";
+                    if (proposal.Tax > 0)
+                    {
+                        ws.Cells["E" + (row + 3)].Value = "PDV:";
+                        ws.Cells["F" + (row + 3)].Value = proposal.Tax + " kn";
+                        ws.Cells["F" + (row + 3)].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                        ws.Cells["F" + (row + 3)].Style.Numberformat.Format = "0.00";
+                    }
+                    else
+                    {
+                        ws.Cells["E" + (row + 3) + ":F" + (row + 3)].Merge = true;
+                        ws.Cells["E" + (row + 3)].Value = "PDV nije obračunat";
+                    }
+                    ws.Cells["E" + (row + 4)].Value = "UKUPNO:";
+                    ws.Cells["F" + (row + 4)].Value = proposal.Total + " kn";
+                    ws.Cells["F" + (row + 4)].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                    ws.Cells["F" + (row + 4)].Style.Numberformat.Format = "0.00";
+
+                    using (ExcelRange rng = ws.Cells["E" + (row + 2) + ":F" + (row + 4)])
+                    {
+                        rng.Style.Font.Bold = true;
+                    }
                 }
 
 
+                //Note & Signature
+                ws.Cells["B" + (row + 6)].Value = proposal.Note;
+                ws.Cells["E" + (row + 8)].Value = proposal.Signature;
+                ws.Cells["E" + (row + 8)].Style.WrapText = true;
 
-                ws.Column(1).Width = 5;
-                ws.Column(2).AutoFit();
-                ws.Column(3).AutoFit();
-                ws.Column(4).AutoFit();
-                ws.Column(5).AutoFit();
-                ws.Column(6).AutoFit();
+
+                //Horizontal alignment for all cells
+                ws.Cells["A1:F" + (row + 8)].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+
+                ws.Column(1).Width = 6;
+                if (ws.Column(1).Width > 6)
+                {
+                    ws.Column(1).Width = 6;
+                    ws.Column(1).Style.WrapText = true;
+                }
+                ws.Column(2).Width = 42;
+                if (ws.Column(2).Width > 42)
+                {
+                    ws.Column(2).Width = 42;
+                    ws.Column(2).Style.WrapText = true;
+                }
+                ws.Column(3).Width = 7;
+                if (ws.Column(3).Width > 7)
+                {
+                    ws.Column(3).Width = 7;
+                    ws.Column(3).Style.WrapText = true;
+                }
+                ws.Column(4).Width = 9;
+                if (ws.Column(4).Width > 9)
+                {
+                    ws.Column(4).Width = 9;
+                    ws.Column(4).Style.WrapText = true;
+                }
+                ws.Column(5).Width = 12;
+                if (ws.Column(5).Width > 12)
+                {
+                    ws.Column(5).Width = 12;
+                    ws.Column(5).Style.WrapText = true;
+                }
+                ws.Column(6).Width = 12;
+                if (ws.Column(6).Width > 12)
+                {
+                    ws.Column(6).Width = 12;
+                    ws.Column(6).Style.WrapText = true;
+                }
+
+
+                //todo: fit to a4 page...
+                //ws.PrinterSettings.FitToPage = true;
 
 
                 Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
