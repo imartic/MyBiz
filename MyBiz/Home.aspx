@@ -74,7 +74,7 @@
                     
                     <hr />
                     
-                    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--2dp box homeProposals">
+                    <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet box homeProposals">
                             
                         <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
                             <h4 class="mdl-card__title-text">Proposals</h4>
@@ -114,7 +114,7 @@
 
                         </div>   
                                      
-                    <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--2dp box homeSchedule">
+                    <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet box homeSchedule">
                         <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
                             <h4 class="mdl-card__title-text">Schedule</h4>
                             
