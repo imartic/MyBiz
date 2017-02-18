@@ -24,6 +24,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+    </form>
 
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
@@ -59,16 +60,36 @@
                 <a class="mdl-navigation__link" href="Home.aspx"><i class="material-icons" id="drawerIcon">home</i>Home</a>
                 <a class="mdl-navigation__link" href="Proposals.aspx"><i class="material-icons" id="drawerIcon">subject</i>Proposals</a>
                 <a class="mdl-navigation__link" href="Schedule.aspx"><i class="material-icons" id="drawerIcon">event</i>Schedule</a>
+                <a class="mdl-navigation__link" href="Companies.aspx"><i class="material-icons" id="drawerIcon">business</i>Your Companies</a>
                 <a class="mdl-navigation__link" href="Settings.aspx"><i class="material-icons" id="drawerIcon">settings</i>Settings</a>
             </nav>
         </div>
 
+
         <main class="mdl-layout__content mdl-color--grey-200">
-            <div class="page-content" id="page-content">Settings</div>
+            <div class="page-content mdl-grid" id="page-content" style="margin-top:20px;">
+                <div class="mdl-cell--10-col content contentSettings">
+
+                    <div>
+                        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp settings-card">                           
+                            <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                                <h4 class="mdl-card__title-text">User settings</h4>
+                                                    
+                            </div>
+                        </div> 
+                        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp settings-card">                           
+                            <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                                <h4 class="mdl-card__title-text">Proposal settings</h4>
+                                                    
+                            </div>
+                        </div> 
+                    </div>
+
+                </div>
+            </div>
         </main>
     </div>
 
-    </form>
 
     <script src="Content/jquery-3.1.1.min.js"></script>
     <script src="Content/mdl-v1.1.2/material.min.js"></script>

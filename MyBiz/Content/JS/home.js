@@ -17,7 +17,7 @@ function loadProposals() {
                 var len = proposals.length;
                 var txt = "";
                 if (len > 0) {
-                    $(".mdl-spinner").remove();
+                    //$(".mdl-spinner").remove();
                     for (var i = 0; i < len; i++) {
                         txt += "<tr><td class='mdl-data-table__cell--non-numeric'>" +
                             proposals[i].ProposalName +

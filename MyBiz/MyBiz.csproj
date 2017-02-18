@@ -76,11 +76,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Companies.aspx" />
     <Content Include="Content\jquery-3.1.1.min.js" />
     <Content Include="Content\JS\common.js" />
+    <Content Include="Content\JS\companies.js" />
     <Content Include="Content\JS\home.js" />
     <Content Include="Content\JS\newEditProposal.js" />
     <Content Include="Content\JS\proposals.js" />
+    <Content Include="Content\JS\settings.js" />
     <Content Include="Content\login.css" />
     <Content Include="Content\style.css" />
     <Content Include="Download.aspx" />
@@ -117,6 +120,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Companies.aspx.cs">
+      <DependentUpon>Companies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Companies.aspx.designer.cs">
+      <DependentUpon>Companies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\DbCompany.cs" />
     <Compile Include="DB\DbItems.cs" />
     <Compile Include="DB\DbProposals.cs" />
     <Compile Include="DB\DbUser.cs" />

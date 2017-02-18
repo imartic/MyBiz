@@ -146,5 +146,25 @@ hr {
 }
 
 
-/* summary section */
+/* settings */
+.settings-card{
+    float:left;
+}
 
+.settings-card .mdl-card__title{
+    padding:10px;
+}
+
+.settings-card h4{
+    font-size:18px;
+}
+
+
+/* Companies */
+.companies-card{
+    float:left;
+}
+
+.companies-card h4{
+    font-size:18px;
+}
