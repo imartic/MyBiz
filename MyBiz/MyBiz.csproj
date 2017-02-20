@@ -94,6 +94,8 @@
     <Content Include="NewEditProposal.aspx" />
     <Content Include="Proposals.aspx" />
     <None Include="Resources\background.jpg" />
+    <Content Include="Resources\bluredBG.jpg" />
+    <Content Include="Resources\bluredBG_2.jpg" />
     <Content Include="Schedule.aspx" />
     <Content Include="Settings.aspx" />
     <Content Include="html\settings.html" />

@@ -25,7 +25,7 @@
 </head>
 <body>
     
-    <div class="mdl-layout mdl-js-layout mdl-color--blue-grey-200"> <%--maknuti color ako se bude koristio bg...--%>
+    <div class="mdl-layout mdl-js-layout <%--mdl-color--blue-grey-200--%>"> <%--maknuti color ako se bude koristio bg...--%>
 	    <main class="mdl-layout__content">
 		    <div class="mdl-card mdl-shadow--8dp">
 			    <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
