@@ -96,19 +96,24 @@
 
                     <hr />
 
-                    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width" style="margin-bottom:20px">
-                        <thead>
-                            <tr>
-                                <th class="mdl-data-table__cell--non-numeric" width="50%">Proposal</th>
-                                <th class="mdl-data-table__cell--non-numeric" width="30%">Client</th>
-                                <th class="mdl-data-table__cell--non-numeric" width="20%">Last change</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+
+                    <section id="proposalsTbl">
+
+                        <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width" id="#proposalsTbl" style="margin-bottom:20px">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric" style="width:35%">Proposal</th>
+                                    <th class="mdl-data-table__cell--non-numeric" style="width:30%">Client</th>
+                                    <th class="mdl-data-table__cell--non-numeric" style="width:15%">Last change</th>
+                                    <th class="mdl-data-table__cell--non-numeric" style="width:20%" id="tblBtns"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
                            
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+
+                    </section>
 
                 </div>
             </div>

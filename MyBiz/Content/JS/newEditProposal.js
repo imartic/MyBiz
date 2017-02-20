@@ -70,22 +70,22 @@ function loadItems() {
 
 function fillEdit(proposal) {
     $('#proposalTitle').text(proposal.ProposalName);
-    $('#proposalName').val(proposal.ProposalName);
-    $('#company').val(proposal.CompanyName);
-    $('#companyAddress').val(proposal.CompanyAddress);
-    $('#companyCity').val(proposal.CompanyCity);
-    $('#companyPhone').val(proposal.CompanyPhone);
-    $('#companyFax').val(proposal.CompanyFax);
-    $('#companyEmail').val(proposal.CompanyEmail);
-    $('#companyPIN').val(proposal.CompanyPIN);
-    $('#companyIBAN').val(proposal.CompanyIBAN);
-    $('#client').val(proposal.ClientName);
-    $('#clientAddress').val(proposal.ClientAddress);
-    $('#clientCity').val(proposal.ClientCity);
-    $('#clientPhone').val(proposal.ClientPhone);
-    $('#clientEmail').val(proposal.ClientEmail);
-    $('#clientPIN').val(proposal.ClientPIN);
-    $('#itemsTitle').val(proposal.ItemsTitle);
+    $('#proposalName').val(proposal.ProposalName).parent().addClass('is-dirty');
+    if (proposal.CompanyName != "" && proposal.CompanyName != null) $('#company').val(proposal.CompanyName).parent().addClass('is-dirty');
+    if (proposal.CompanyAddress != "" && proposal.CompanyAddress != null) $('#companyAddress').val(proposal.CompanyAddress).parent().addClass('is-dirty');
+    if (proposal.CompanyCity != "" && proposal.CompanyCity != null) $('#companyCity').val(proposal.CompanyCity).parent().addClass('is-dirty');
+    if (proposal.CompanyPhone != "" && proposal.CompanyPhone != null) $('#companyPhone').val(proposal.CompanyPhone).parent().addClass('is-dirty');
+    if (proposal.CompanyFax != "" && proposal.CompanyFax != null) $('#companyFax').val(proposal.CompanyFax).parent().addClass('is-dirty');
+    if (proposal.CompanyEmail != "" && proposal.CompanyEmail != null) $('#companyEmail').val(proposal.CompanyEmail).parent().addClass('is-dirty');
+    if (proposal.CompanyPIN != "" && proposal.CompanyPIN != null) $('#companyPIN').val(proposal.CompanyPIN).parent().addClass('is-dirty');
+    if (proposal.CompanyIBAN != "" && proposal.CompanyIBAN != null) $('#companyIBAN').val(proposal.CompanyIBAN).parent().addClass('is-dirty');
+    if (proposal.ClientName != "" && proposal.ClientName != null) $('#client').val(proposal.ClientName).parent().addClass('is-dirty');
+    if (proposal.ClientAddress != "" && proposal.ClientAddress != null) $('#clientAddress').val(proposal.ClientAddress).parent().addClass('is-dirty');
+    if (proposal.ClientCity != "" && proposal.ClientCity != null) $('#clientCity').val(proposal.ClientCity).parent().addClass('is-dirty');
+    if (proposal.ClientPhone != "" && proposal.ClientPhone != null) $('#clientPhone').val(proposal.ClientPhone).parent().addClass('is-dirty');
+    if (proposal.ClientEmail != "" && proposal.ClientEmail != null) $('#clientEmail').val(proposal.ClientEmail).parent().addClass('is-dirty');
+    if (proposal.ClientPIN != "" && proposal.ClientPIN != null) $('#clientPIN').val(proposal.ClientPIN).parent().addClass('is-dirty');
+    if (proposal.ItemsTitle != "" && proposal.ItemsTitle != null) $('#itemsTitle').val(proposal.ItemsTitle).parent().addClass('is-dirty');
     $('#amount').text(proposal.Amount);
     if (proposal.Tax != 0) {
         $('#tax').text(proposal.Tax);
@@ -96,8 +96,8 @@ function fillEdit(proposal) {
         $('#cbTax').prop('checked', false);
     }
     $('#total').text(proposal.Total);
-    $('#note').val(proposal.Note);
-    $('#signature').val(proposal.Signature);
+    if (proposal.Note != "" && proposal.Note != null) $('#note').val(proposal.Note).parent().addClass('is-dirty');
+    if (proposal.Signature != "" && proposal.Signature != null) $('#signature').val(proposal.Signature).parent().addClass('is-dirty');
 }
 
 function fillEditItems(item, i) {

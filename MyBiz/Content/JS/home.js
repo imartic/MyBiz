@@ -19,9 +19,9 @@ function loadProposals() {
                 if (len > 0) {
                     //$(".mdl-spinner").remove();
                     for (var i = 0; i < len; i++) {
-                        txt += "<tr><td class='mdl-data-table__cell--non-numeric'>" +
+                        txt += "<tr><td class='mdl-data-table__cell--non-numeric' style='width:60%'>" +
                             proposals[i].ProposalName +
-                            "</td><td>" +
+                            "</td><td  style='width:40%'>" +
                             ToJavaScriptDate(proposals[i].DateSaved) +
                             "</td></tr>";
                     }

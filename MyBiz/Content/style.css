@@ -168,3 +168,29 @@ hr {
 .companies-card h4{
     font-size:18px;
 }
+
+
+/* responsive table */
+.mdl-data-table {
+    table-layout:fixed;
+    width:100%; 
+}
+table td, th {
+  /*width: 100%;*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+@media (max-width: 600px) {
+    #proposalsTbl th:nth-child(3),tr td:nth-child(3){
+      display:none;
+    }
+}
+
+@media (max-width: 400px) {
+    #proposalsTbl th:nth-child(2),tr td:nth-child(2){
+      display:none;
+    }
+}
