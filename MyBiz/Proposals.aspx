@@ -99,7 +99,7 @@
 
                     <section id="proposalsTbl">
 
-                        <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width" id="#proposalsTbl" style="margin-bottom:20px">
+                        <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp full-width dt-def" id="#proposalsTbl" style="margin-bottom:20px">
                             <thead>
                                 <tr>
                                     <th class="mdl-data-table__cell--non-numeric" style="width:35%">Proposal</th>

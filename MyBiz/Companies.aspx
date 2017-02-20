@@ -97,7 +97,7 @@
 
                     <div>
                         <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp companies-card">
-                            <div class="mdl-card__title mdl-color--primary mdl-color-text--white" style="padding:10px;">
+                            <div class="mdl-card__title mdl-color--primary mdl-color-text--white" style="padding:10px 10px 10px 15px;">
                                 <h4 class="mdl-card__title-text" style="margin-bottom:5px;">Your Companies</h4>
                                 <button class="mdl-button mdl-js-button mdl-button--icon"
                                     id="newCompany"

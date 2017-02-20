@@ -88,7 +88,7 @@
                             <div class="mdl-tooltip mdl-tooltip--left" for="newProposal_box">New Proposal</div>                         
                         </div>
 
-                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp homeProposalsTbl">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp homeProposalsTbl dt-def">
                                 <tbody class="homeProposalsTbody">
                                     <!--<tr>
                                         <td class="mdl-data-table__cell--non-numeric">Vukovarska 50</td>
@@ -127,7 +127,7 @@
                             <div class="mdl-tooltip mdl-tooltip--left" for="newEvent_box">New Event</div> 
                         </div>
 
-                        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp homeScheduleTbl">
+                        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp homeScheduleTbl dt-def">
                             <tbody>
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Predviđeni kraj radova u Ul. Franje Čandeka 22</td>

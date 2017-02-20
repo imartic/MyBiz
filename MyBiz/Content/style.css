@@ -175,7 +175,7 @@ hr {
     table-layout:fixed;
     width:100%; 
 }
-table td, th {
+.dt-def td, th {
   /*width: 100%;*/
   white-space: nowrap;
   overflow: hidden;
