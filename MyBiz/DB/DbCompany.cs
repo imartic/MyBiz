@@ -50,7 +50,7 @@ namespace MyBiz.Data
         private const string SQL = @"SELECT ID, UserID, CompanyName, CompanyAddress, CompanyCity, CompanyPIN, CompanyPhone, CompanyFax, CompanyEmail, CompanyIBAN FROM Company";
         public static DbCollection<DbCompany> LoadAll(int userId, Dbase database = null)
         {
-            var sql = SQL + @" WHERE UserID=@UserID ORDER BY CompanyName DESC";
+            var sql = SQL + @" WHERE UserID=@UserID ORDER BY CompanyName";
             var di = new DbItem("UserID", userId);
             var result = DbaseTools.ExecuteQuery<DbCompany>(database, sql, di);
             return result;
@@ -66,10 +66,11 @@ namespace MyBiz.Data
             return result;
         }
 
-        public bool Delete()
+        public static bool Delete(Int32 id)
         {
             var sql = @"DELETE FROM Company WHERE ID=@ID";
-            return DbaseTools.ExecuteNonQuery(null, sql, this);
+            var di = new DbItem("ID", id);
+            return DbaseTools.ExecuteNonQuery(null, sql, di);
         }
 
         public bool Save(Dbase database = null)

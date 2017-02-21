@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="Content/mdl-v1.1.2/material.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="Content/easy-autocomplete.css"> 
     <link rel="stylesheet" href="Content/style.css" />
 
 </head>
@@ -63,10 +64,14 @@
                 <a class="mdl-navigation__link" href="Schedule.aspx"><i class="material-icons" id="drawerIcon">event</i>Schedule</a>
                 <a class="mdl-navigation__link" href="Companies.aspx"><i class="material-icons" id="drawerIcon">business</i>Your Companies</a>
                 <a class="mdl-navigation__link" href="Settings.aspx"><i class="material-icons" id="drawerIcon">settings</i>Settings</a>
+
+                <footer style="position:fixed; bottom:25px; left:40px;">
+                    <small style="margin-top:100px; color:#555">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Ivan Martić<!--. All rights reserved.--></small>
+                </footer>
             </nav>
         </div>
 
-        <main class="mdl-layout__content mdl-color--grey-200">
+        <main class="mdl-layout__content mdl-color--grey-200" style="padding-bottom:40px;">
             <div class="page-content mdl-grid" id="page-content">
                 <div class="mdl-cell--10-col content contentProposal">                 
 
@@ -152,7 +157,7 @@
                         <%-- Client data section --%>
                         <div class="section client-section"><p class="sectionTitle">Client data</p></div>
 
-                        <div class="client-data section-data mdl-card mdl-shadow--2dp full-width section-card">
+                        <div class="client-data section-data mdl-card mdl-shadow--2dp full-width section-card" style="z-index:0">
                             <div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput">
                                 <input class="mdl-textfield__input" type="text" id="client"/>
@@ -197,7 +202,7 @@
                             
                             <div class="items">
                                 <%--ne koristim mdl-card jer nije bas responsive za mobitele--%>
-                                <div id="item0" class="item mdl-card mdl-card mdl-shadow--2dp full-width item-card"> 
+                                <div id="item0" class="item mdl-card mdl-card mdl-shadow--2dp full-width item-card" style="z-index:0"> 
                                     <div>
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput mdl-cell mdl-cell--1-col" id="itemNumberDiv0" style="min-width:30px">
                                             <input class="mdl-textfield__input" type="text" id="itemNumber0" value="1"/>
@@ -258,7 +263,7 @@
 
 
                         <div class="section summary-section"><p class="sectionTitle">Note & Signature</p></div>
-                        <div class="section-data mdl-card mdl-card mdl-shadow--2dp full-width section-card">
+                        <div class="section-data mdl-card mdl-card mdl-shadow--2dp full-width section-card" style="z-index:0">
                             <div>
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label proposalInput" style="width:45%">
                                     <textarea class="mdl-textfield__input" type="text" rows= "3" id="note" ></textarea>
@@ -271,17 +276,17 @@
                             </div>
                         </div>
 
+
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns" id="btnSave" 
+                                onclick="return false;">
+                            Save proposal
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns" id="btnExport" 
+                                onclick="return false;" disabled>
+                            Export proposal
+                        </button>
+
                     </form>
-
-
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns" id="btnSave" 
-                            onclick="return false;">
-                        Save proposal
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent proposalBtns" id="btnExport" 
-                            onclick="return false;" disabled>
-                        Export proposal
-                    </button>
 
                 </div>
             </div>
@@ -290,6 +295,7 @@
 
         <script src="Content/jquery-3.1.1.min.js"></script>
         <script src="Content/mdl-v1.1.2/material.min.js"></script>
+        <script src="Content/jquery.easy-autocomplete.min.js"></script> 
         <script src="Content/JS/newEditProposal.js"></script>
         <script src="Content/JS/common.js"></script>
 </body>

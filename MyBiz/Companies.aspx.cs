@@ -50,12 +50,25 @@ namespace MyBiz
         }
         #endregion
 
-        //#region DeleteProposal
-        //[WebMethod]
-        //public static string DeleteProposal(Int32 id)
-        //{
+        #region SaveCompany
+        [WebMethod]
+        public static string SaveCompany(DbCompany co)
+        {
+            var dbCompany = new DbCompany(co.ID, Home.AppUser.ID, co.CompanyName, co.CompanyAddress, co.CompanyCity, co.CompanyPIN, co.CompanyPhone, co.CompanyFax, co.CompanyEmail, co.CompanyIBAN);
 
-        //}
-        //#endregion
+            var res = dbCompany.Save();
+
+            return res ? "OK" : "Error on saving company!";
+        }
+        #endregion
+
+        #region DeleteCompany
+        [WebMethod]
+        public static string DeleteCompany(Int32 id)
+        {
+            var result = DbCompany.Delete(id);
+            return result ? "OK" : "Error on deleting company!";
+        }
+        #endregion
     }
 }

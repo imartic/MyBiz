@@ -78,7 +78,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Companies.aspx" />
+    <Content Include="Content\dialog-polyfill.css" />
+    <Content Include="Content\dialog-polyfill.js" />
+    <Content Include="Content\easy-autocomplete.css" />
+    <Content Include="Content\easy-autocomplete.min.css" />
     <Content Include="Content\jquery-3.1.1.min.js" />
+    <Content Include="Content\jquery.easy-autocomplete.min.js" />
     <Content Include="Content\JS\common.js" />
     <Content Include="Content\JS\companies.js" />
     <Content Include="Content\JS\home.js" />
@@ -87,6 +92,7 @@
     <Content Include="Content\JS\settings.js" />
     <Content Include="Content\login.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\suite.js" />
     <Content Include="Download.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />

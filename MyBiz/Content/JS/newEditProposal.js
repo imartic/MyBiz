@@ -4,6 +4,8 @@ var editId = 0;
 
 var deletedItems = [];
 
+var cosLoaded = false; //if companies load for autocomplete -> for companyName input
+
 
 $(document).ready(function () {
     $('.company-section').html("<i class='material-icons sectionIcon'>expand_less</i><span class='sectionTitle'>Company data</span>")
@@ -71,7 +73,7 @@ function loadItems() {
 function fillEdit(proposal) {
     $('#proposalTitle').text(proposal.ProposalName);
     $('#proposalName').val(proposal.ProposalName).parent().addClass('is-dirty');
-    if (proposal.CompanyName != "" && proposal.CompanyName != null) $('#company').val(proposal.CompanyName).parent().addClass('is-dirty');
+    if (proposal.CompanyName != "" && proposal.CompanyName != null) ((cosLoaded) ? $('#company').val(proposal.CompanyName).parent().parent().addClass('is-dirty') : $('#company').val(proposal.CompanyName).parent().addClass('is-dirty'));
     if (proposal.CompanyAddress != "" && proposal.CompanyAddress != null) $('#companyAddress').val(proposal.CompanyAddress).parent().addClass('is-dirty');
     if (proposal.CompanyCity != "" && proposal.CompanyCity != null) $('#companyCity').val(proposal.CompanyCity).parent().addClass('is-dirty');
     if (proposal.CompanyPhone != "" && proposal.CompanyPhone != null) $('#companyPhone').val(proposal.CompanyPhone).parent().addClass('is-dirty');
@@ -213,25 +215,6 @@ function deleteItem(btn) {
     }    
 }
 
-//function deleteItemsFromDB() {
-//    $.ajax({
-//        type: "POST",
-//        url: "NewEditProposal.aspx/DeleteItems",
-//        data: "{itemId:" + deletedItems + "}",
-//        contentType: "application/json; charset=utf-8",
-//        dataType: "json",
-//        success: function (data) {
-//            alert(data.d);
-//            //$('.items').not(':first').remove();
-//            //loadItems();
-//            location.reload();
-//        },
-//        error: function (res) {
-//            alert(res.responseText);
-//        }
-//    });
-//}
-
 
 //======= SAVE ========
 $('#btnSave').click(function () {
@@ -255,7 +238,6 @@ $('#btnSave').click(function () {
         return;
     }
 
-    //deleteItemsFromDB();
     var delItems = JSON.stringify(deletedItems);
 
     $.ajax({
@@ -419,3 +401,55 @@ function calcTaxAndTotal() {
     $('#tax').text((($('#amount').text()) * 0.25).toFixed(2));
     $('#total').text(((parseFloat($('#amount').text())) + (parseFloat($('#tax').text()))).toFixed(2));
 }
+
+
+
+/******* autocomplete *******/
+$.ajax({
+    type: "POST",
+    url: "Companies.aspx/LoadCompanies",
+    data: "{}",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+        var companies = jQuery.parseJSON(data.d);
+
+        if (companies != null && companies.length > 0) {
+            var options = {
+                data: companies,
+                getValue: "CompanyName",
+                list: {
+                    maxNumberOfElements: 20,
+                    match: {
+                        enabled: true
+                    },
+
+                    onSelectItemEvent: function () {
+                        var address = $("#company").getSelectedItemData().CompanyAddress;
+                        var city = $("#company").getSelectedItemData().CompanyCity;
+                        var phone = $("#company").getSelectedItemData().CompanyPhone;
+                        var fax = $("#company").getSelectedItemData().CompanyFax;
+                        var email = $("#company").getSelectedItemData().CompanyEmail;
+                        var pin = $("#company").getSelectedItemData().CompanyPIN;
+                        var iban = $("#company").getSelectedItemData().CompanyIBAN;
+
+                        (address != null && address != '') ? $("#companyAddress").val(address).parent().addClass('is-dirty') : $("#companyAddress").val('').parent().removeClass('is-dirty');
+                        (city != null && city != '') ? $("#companyCity").val(city).parent().addClass('is-dirty') : $("#companyCity").val('').parent().removeClass('is-dirty');
+                        (phone != null && phone != '') ? $("#companyPhone").val(phone).parent().addClass('is-dirty') : $("#companyPhone").val('').parent().removeClass('is-dirty');
+                        (fax != null && fax != '') ? $("#companyFax").val(fax).parent().addClass('is-dirty') : $("#companyFax").val('').parent().removeClass('is-dirty');
+                        (email != null && email != '') ? $("#companyEmail").val(email).parent().addClass('is-dirty') : $("#companyEmail").val('').parent().removeClass('is-dirty');
+                        (pin != null && pin != '') ? $("#companyPIN").val(pin).parent().addClass('is-dirty') : $("#companyPIN").val('').parent().removeClass('is-dirty');
+                        (iban != null && iban != '') ? $("#companyIBAN").val(iban).parent().addClass('is-dirty') : $("#companyIBAN").val('').parent().removeClass('is-dirty');
+                    }
+                }
+            };
+
+            cosLoaded = true;
+
+            $("#company").easyAutocomplete(options);
+        }
+    },
+    error: function (res) {
+        alert(res.responseText);
+    }
+});

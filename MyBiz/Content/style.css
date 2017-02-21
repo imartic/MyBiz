@@ -1,4 +1,12 @@
-﻿body {
+﻿html {
+    /*background: url(../Resources/bluredBG.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+}
+
+body {
 }
 
 #drawerIcon{
@@ -16,7 +24,7 @@ hr {
 }
 
 #demo-menu-lower-right{
-    margin-left: 40px;
+    margin-left: 50px;
 }
 
 .full-width {
@@ -99,7 +107,8 @@ hr {
 }
 
 .proposalBtns{
-    margin: 40px 0 20px 10px;
+    /*margin: 40px 0 20px 10px;*/
+    margin: 5px;
     float: right;
 }
 
@@ -122,7 +131,9 @@ hr {
 .section-card{
     padding:15px;
     min-height:10px;
+    overflow: unset;
 }
+
 .item-card{
     padding:5px 5px 0 5px;
     min-height:10px;
@@ -167,6 +178,14 @@ hr {
 
 .companies-card h4{
     font-size:18px;
+}
+
+.co-input {
+   color: red;
+}
+
+.selected-row{
+    background-color:#eee;
 }
 
 

@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="Content/mdl-v1.1.2/material.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="Content/dialog-polyfill.css" />
     <link rel="stylesheet" href="Content/style.css" />
 </head>
 <body>
@@ -34,7 +35,7 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="#" id="companiesMenuIcon"><i class="material-icons">add</i></a>
+                    <a class="mdl-navigation__link show-modal" href="#" id="companiesMenuIcon"><i class="material-icons">add</i></a>
                     <div class="mdl-tooltip" for="companiesMenuIcon">New Company</div>
                     <a class="mdl-navigation__link" href="Home.aspx" id="homeMenuIcon"><i class="material-icons">home</i></a>
                     <div class="mdl-tooltip" for="homeMenuIcon">Home</div>
@@ -60,9 +61,56 @@
                 <a class="mdl-navigation__link" href="Schedule.aspx"><i class="material-icons" id="drawerIcon">event</i>Schedule</a>
                 <a class="mdl-navigation__link" href="Companies.aspx"><i class="material-icons" id="drawerIcon">business</i>Your Companies</a>
                 <a class="mdl-navigation__link" href="Settings.aspx"><i class="material-icons" id="drawerIcon">settings</i>Settings</a>
+
+                <footer style="position:fixed; bottom:25px; left:40px;">
+                    <small style="margin-top:100px; color:#555">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Ivan Martić<!--. All rights reserved.--></small>
+                </footer>
             </nav>
         </div>
 
+        <%--MODAL--%>
+        <dialog class="mdl-dialog">
+            <div class="mdl-dialog__title" style="font-size:20px; text-align:center; margin-bottom:7px">Company data</div>
+            <div class="mdl-dialog__content">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="name"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="name">Company name</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="address"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="address">Address</label>
+                </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="city"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="city">City</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="phone"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="phone">Phone number</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="fax"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="fax">Fax number</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="email"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="email">E-mail address</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="pin"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="pin">Personal Identification Number</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input dlg-input" type="text" id="iban"/>
+                    <label class="mdl-textfield__label mdl-color-text--primary-dark" for="iban">IBAN</label>
+                </div>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button type="button" class="mdl-button close"><i class="material-icons" style="margin-bottom:3px; color:red">close</i>&nbsp;Cancel</button>
+                <button type="button" class="mdl-button save"><i class="material-icons" style="margin-bottom:3px; color:green">check</i>&nbsp;<b>Save</b></button>
+            </div>
+        </dialog>
+        <%--MODAL--%>
 
         <main class="mdl-layout__content mdl-color--grey-200">
             <div class="page-content mdl-grid" id="page-content" style="margin-top:20px;">
@@ -96,10 +144,10 @@
                      <hr />--%>
 
                     <div>
-                        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp companies-card">
+                        <div class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet mdl-shadow--2dp companies-card">
                             <div class="mdl-card__title mdl-color--primary mdl-color-text--white" style="padding:10px 10px 10px 15px;">
                                 <h4 class="mdl-card__title-text" style="margin-bottom:5px;">Your Companies</h4>
-                                <button class="mdl-button mdl-js-button mdl-button--icon"
+                                <button class="mdl-button mdl-js-button mdl-button--icon show-modal"
                                     id="newCompany"
                                     style="margin-left:auto;"
                                     onclick="">
@@ -108,8 +156,8 @@
                                 <div class="mdl-tooltip mdl-tooltip--left" for="newCompany">New Company</div>
                             </div>
                                 
-                            <table class="mdl-data-table mdl-js-data-table mdl-data-table full-width" id="companiesTbl">
-<%--                            <thead>
+                            <table class="mdl-data-table mdl-js-data-table full-width" id="companiesTbl">
+                            <%--<thead>
                                     <tr>
                                         <th class="mdl-data-table__cell--non-numeric" width="50%">Company name</th>
                                         <th></th>
@@ -120,11 +168,46 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp companies-card">                           
+                        <div class="mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--2dp companies-card">                           
                             <div class="mdl-card__title mdl-color--primary mdl-color-text--white" style="padding:15px;">
                                 <h4 class="mdl-card__title-text">Company data</h4>
-                                                    
-                            </div>
+                            </div>  
+                            
+                            <div class="mdl-card__supporting-text"> 
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-name"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-name">Company name</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-address"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-address">Address</label>
+                                </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-city"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-city">City</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-phone"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-phone">Phone number</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-fax"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-fax">Fax number</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-email"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-email">E-mail address</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-pin"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-pin">Personal Identification Number</label>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+                                    <input class="mdl-textfield__input co-input" type="text" id="co-iban"/>
+                                    <label class="mdl-textfield__label mdl-color-text--primary" for="co-iban">IBAN</label>
+                                </div>
+                            </div>  
+                                                 
                         </div> 
                     </div>
 
@@ -137,6 +220,7 @@
 
     <script src="Content/jquery-3.1.1.min.js"></script>
     <script src="Content/mdl-v1.1.2/material.min.js"></script>
+    <script src="Content/dialog-polyfill.js"></script>
     <script src="Content/JS/common.js"></script>
     <script src="Content/JS/companies.js"></script>
 </body>

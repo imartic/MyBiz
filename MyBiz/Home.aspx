@@ -61,6 +61,10 @@
                 <a class="mdl-navigation__link" href="Schedule.aspx"><i class="material-icons" id="drawerIcon">event</i>Schedule</a>
                 <a class="mdl-navigation__link" href="Companies.aspx"><i class="material-icons" id="drawerIcon">business</i>Your Companies</a>
                 <a class="mdl-navigation__link" href="Settings.aspx"><i class="material-icons" id="drawerIcon">settings</i>Settings</a>
+                
+                <footer style="position:fixed; bottom:25px; left:40px;">
+                    <small style="margin-top:100px; color:#555">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Ivan Martić<!--. All rights reserved.--></small>
+                </footer>
             </nav>
         </div>
 
@@ -70,11 +74,11 @@
                 <div class="mdl-cell--10-col content contentHome">
                     <h2>Welcome to MyBiz!</h2>
                     <p class ="description">Your online business assistant!</p>
-                    <p class ="description">MyBiz makes writing business proposals and organizing tasks and events simple and straightforward.</p>
+                    <p class ="description">MyBiz makes running your business simple and straightforward.</p>
                     
                     <hr />
                     
-                    <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet box homeProposals">
+                    <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-shadow--4dp box homeProposals">
                             
                         <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
                             <h4 class="mdl-card__title-text">Proposals</h4>
@@ -114,7 +118,7 @@
 
                         </div>   
                                      
-                    <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet box homeSchedule">
+                    <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-shadow--4dp box homeSchedule">
                         <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
                             <h4 class="mdl-card__title-text">Schedule</h4>
                             
@@ -127,7 +131,7 @@
                             <div class="mdl-tooltip mdl-tooltip--left" for="newEvent_box">New Event</div> 
                         </div>
 
-                        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp homeScheduleTbl dt-def">
+                        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp homeScheduleTbl dt-def">
                             <tbody>
                                 <tr>
                                     <td class="mdl-data-table__cell--non-numeric">Predviđeni kraj radova u Ul. Franje Čandeka 22</td>
