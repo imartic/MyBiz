@@ -50,7 +50,6 @@ function loadCompanies() {
     });
 };
 
-//TODO: MODAL newEditCompany!!
 
 function setIconTooltips(id) {
     var onclick_link = "";

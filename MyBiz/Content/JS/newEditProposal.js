@@ -253,7 +253,7 @@ $('#btnSave').click(function () {
 
                 var id = parseInt(data.d.replace(/[^0-9\.]/g, ''), 10);
                 editId = id;
-                $('#btnExport').prop('disabed', false);
+                $('#btnExport').prop('disabled', false);
             }
             else {
                 alert(data.d);
