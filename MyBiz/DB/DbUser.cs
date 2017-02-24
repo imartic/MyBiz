@@ -59,7 +59,7 @@ namespace MyBiz.Data
 
         public static DbUser Load(string username, Dbase database = null)
         {
-            var sql = SQL + @" WHERE Username=@Username ORDER BY Role";
+            var sql = SQL + @" WHERE Username=@Username";
             var di = new DbItem("Username", username);
             DbUser result = null;
             var dc = DbaseTools.ExecuteQuery<DbUser>(database, sql, di);

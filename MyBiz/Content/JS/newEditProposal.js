@@ -395,7 +395,7 @@ $('#cbTax').click(function () {
         $('#tax').hide();
         $('#total').text(parseFloat($('#amount').text()));
     }
-})
+});
 
 function calcTaxAndTotal() {
     $('#tax').text((($('#amount').text()) * 0.25).toFixed(2));
