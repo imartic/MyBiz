@@ -104,9 +104,6 @@
     <Content Include="Resources\bluredBG_2.jpg" />
     <Content Include="Schedule.aspx" />
     <Content Include="Settings.aspx" />
-    <Content Include="html\settings.html" />
-    <Content Include="html\schedule.html" />
-    <Content Include="html\home.html" />
     <Content Include="packages.config" />
     <Content Include="Content\mdl-v1.1.2\package.json" />
     <Content Include="Content\mdl-v1.1.2\material.min.js.map" />
@@ -125,7 +122,6 @@
     <Content Include="Content\mdl-v1.1.2\material.js" />
     <Content Include="Content\mdl-v1.1.2\material.min.css" />
     <Content Include="Content\mdl-v1.1.2\material.min.js" />
-    <Content Include="html\proposals.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -60,47 +60,6 @@ namespace MyBiz
         }
         #endregion
 
-        //#region DeleteItem
-        //[WebMethod]
-        //public static string DeleteItems(Int32[] items)
-        //{
-        //    var result = "";
-
-        //    var db = DbaseTools.CreateDbase();
-        //    try
-        //    {
-        //        db.Open();
-        //        db.BeginTransaction();
-        //        foreach (var id in items)
-        //        {
-        //            var dbItems = new DbItems();
-        //            var res = dbItems.Delete(id, db);
-        //            if (!res)
-        //            {
-        //                result = "Error on deleting item with ID = " + id + " from database!";
-        //                db.Rollback();
-        //                break;
-        //            }
-
-        //            result = "OK";
-        //            db.Commit();
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        result = "Error on database!";
-        //    }
-        //    finally
-        //    {
-        //        db.Close();
-        //        db.Dispose();
-        //        db = null;
-        //    }
-
-        //    return result;
-        //}
-        //#endregion
-
         #region DeleteItem
         [WebMethod]
         public static bool DeleteItem(Int32 itemId)
@@ -185,58 +144,5 @@ namespace MyBiz
             return result /*? "OK" : "Error saving proposal!"*/;
         }
         #endregion
-
-        [WebMethod]
-        public static string[] ExportProposal(int proposalId)
-        {
-            string[] result = new string[2] { "", "" };
-
-            if (proposalId < 1)
-            {
-                result[0] = "Proposal not saved!";
-                return result;
-            }
-
-            var proposal = DbProposals.Load(proposalId);
-            var items = DbItems.LoadAll(proposalId);         
-
-            if (proposal == null)
-            {
-                result[0] = "No proposal!";
-                return result;
-            }
-
-            if (xlApp == null)
-            {
-                result[0] = "To export proposals Microsoft Excel needs to be installed on your computer!";
-                return result;
-            }
-
-            var xlWorkBook = xlApp.Workbooks.Add();
-            var xlName = proposal.ProposalName;
-            Excel.Range chartRange;
-
-            var xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            xlWorkSheet.get_Range("b2", "e3").Merge(false);
-            chartRange = xlWorkSheet.get_Range("b2", "e3");
-            chartRange.FormulaR1C1 = proposal.CompanyName + "\n" + proposal.CompanyAddress + "\n" + proposal.CompanyCity;
-
-            xlWorkBook.SaveAs("D:\\" + xlName + ".xls");
-
-            xlWorkBook.Close(true);
-            xlApp.Quit();
-
-            if (File.Exists("D:\\" + xlName + ".xls"))
-            {
-                result[0] = "Proposal exported!";
-                result[1] = xlName + ".xls";
-            }
-
-            Marshal.ReleaseComObject(xlWorkSheet);
-            Marshal.ReleaseComObject(xlWorkBook);
-            Marshal.ReleaseComObject(xlApp);
-
-            return result;
-        }
     }
 }

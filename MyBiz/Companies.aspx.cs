@@ -54,7 +54,9 @@ namespace MyBiz
         [WebMethod]
         public static string SaveCompany(DbCompany co)
         {
-            var dbCompany = new DbCompany(co.ID, Home.AppUser.ID, co.CompanyName, co.CompanyAddress, co.CompanyCity, co.CompanyPIN, co.CompanyPhone, co.CompanyFax, co.CompanyEmail, co.CompanyIBAN);
+            var dbCompany = new DbCompany(
+                co.ID, Home.AppUser.ID, co.CompanyName, co.CompanyAddress, co.CompanyCity, co.CompanyPIN, co.CompanyPhone, co.CompanyFax, co.CompanyEmail, co.CompanyIBAN
+                );
 
             var res = dbCompany.Save();
 

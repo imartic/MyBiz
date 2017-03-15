@@ -13,11 +13,9 @@ function loadProposals() {
             var proposals = jQuery.parseJSON(data.d);
 
             if (proposals) {
-                //$(".homeProposals").append("<div class='mdl-spinner mdl-js-spinner is-active' style='margin:10px'></div>");
                 var len = proposals.length;
                 var txt = "";
                 if (len > 0) {
-                    //$(".mdl-spinner").remove();
                     for (var i = 0; i < len; i++) {
                         txt += "<tr><td class='mdl-data-table__cell--non-numeric' style='width:60%'>" +
                             proposals[i].ProposalName +
@@ -32,7 +30,6 @@ function loadProposals() {
                     }
                 }
                 else {
-                    //$(".mdl-spinner").remove();
                     $(".homeProposalsTbl").hide();
                     $(".homeProposals .mdl-button--raised").hide();
                     $(".homeProposals tbody").append("<p style = 'margin: 10px'><b>No saved proposals.</b></p>");

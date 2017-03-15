@@ -139,7 +139,6 @@ function toggleContent(section, title){
     $content = $header.next();
     //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
     $content.slideToggle(100, function () {
-        //execute this after slideToggle is done
         //change text of header based on visibility of content div
         $header.html(function () {
             //change text based on condition
@@ -315,8 +314,6 @@ function getItems() {
 
 //========= EXPORT ==========
 $('#btnExport').click(function () {
-    //exportProposal();
-
     if (editId > 0) {
         //window.location = 'Download.aspx?id=' + eventId + '?type=' + type;
         var win = window.open('Download.aspx?id=' + editId, '_blank');
